@@ -10,6 +10,7 @@ import SkillsSection from '@/components/sections/SkillsSection'
 import ExperienceSection from '@/components/sections/ExperienceSection'
 import ContactSection from '@/components/sections/ContactSection'
 import CommandPalette from '@/components/ui/CommandPalette'
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export default function Home() {
   const [cmdOpen, setCmdOpen] = useState(false)
@@ -48,6 +49,8 @@ export default function Home() {
       </main>
 
       <Footer />
+
+      <SpeedInsights/>
     </>
   )
 }
