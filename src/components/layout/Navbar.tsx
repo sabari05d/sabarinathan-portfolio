@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Terminal, Menu, X, Command } from 'lucide-react'
+import data from '@/data/portfolio.json'
 
 interface NavbarProps {
   onCommandPalette: () => void
@@ -45,11 +46,10 @@ export default function Navbar({ onCommandPalette }: NavbarProps) {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
             ? 'py-3 bg-[rgba(2,4,8,0.85)] backdrop-blur-xl border-b border-[rgba(0,229,255,0.08)]'
             : 'py-5 bg-transparent'
-        }`}
+          }`}
       >
         <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
@@ -74,11 +74,10 @@ export default function Navbar({ onCommandPalette }: NavbarProps) {
                 <a
                   key={link.label}
                   href={link.href}
-                  className={`relative px-4 py-2 text-sm font-medium transition-colors rounded-lg ${
-                    isActive
+                  className={`relative px-4 py-2 text-sm font-medium transition-colors rounded-lg ${isActive
                       ? 'text-[#00e5ff]'
                       : 'text-[#8ba4b5] hover:text-[#e8f4f8]'
-                  }`}
+                    }`}
                 >
                   {isActive && (
                     <motion.span
@@ -104,7 +103,7 @@ export default function Navbar({ onCommandPalette }: NavbarProps) {
               <span>cmd+k</span>
             </button>
             <a
-              href="mailto:nsabarinanthan.in@gmail.com"
+              href={`mailto:${data.contact.email}`}
               className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg bg-[#00e5ff] text-[#020408] text-sm font-semibold hover:bg-[#00b8cc] transition-all hover:shadow-[0_0_20px_rgba(0,229,255,0.3)]"
             >
               Hire Me
