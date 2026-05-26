@@ -2,6 +2,7 @@
     "name": "Sabarinathan D",
     "title": "Full Stack Developer",
     "summary": "Full Stack Developer focused on building scalable, high-performance web applications using Java, Spring Boot, React, and PHP (CodeIgniter). Passionate about clean architecture, performance optimization, and creating seamless user experiences. Strong believer in systems thinking and continuous learning.",
+    "subsummary": "I specialize in developing secure and scalable applications, from e-commerce platforms to data-driven web solutions. My recent work includes backend security enhancements, real-time applications, and cloud integrations.",
     "landing": {
         "title": "Sabarinathan D",
         "subtitle": "Full Stack Developer • System Architect • Performance Enthusiast",
@@ -27,7 +28,7 @@
         {
             "name": "Habit Tracker (TrackerX)",
             "description": "A gamified habit-tracking application featuring an XP-based leveling system and real-time progress analytics.",
-            "code": "https://github.com/sabari05d/Quotes_Display_App",
+            "code": "https://github.com/sabari05d/trackerX",
             "link": "https://trackerxx.vercel.app/",
             "technologies": [
                 "React",
@@ -39,7 +40,7 @@
         {
             "name": "Trading Research App",
             "description": "A data-driven platform designed to analyze market trends and streamline technical research for traders.",
-            "code": "https://github.com/sabari05d/sentinal-bot",
+            "code": "https://github.com/sabari05d/sentinal_trading_research_app",
             "link": "",
             "technologies": [
                 "React",
@@ -88,6 +89,7 @@
     ],
     "skills": [
         "React",
+        "Next.js",
         "PHP",
         "Python",
         "Java",
@@ -107,21 +109,21 @@
     "experience": [
         {
             "company": "SalesQueen Software Solutions",
-            "role": "Frontend Intern",
-            "duration": "May 2024 - Aug 2024",
-            "description": "Worked on frontend development using HTML, CSS, JavaScript, and Bootstrap. Collaborated on website projects to enhance UI/UX and responsiveness."
+            "role": "Frontend Developer Intern",
+            "duration": "Jul 2024 - Sep 2024",
+            "description": "Built responsive, high-performance user interfaces using HTML, CSS, JavaScript, and Bootstrap. Collaborated closely with design teams to translate wireframes into interactive, pixel-perfect web experiences."
         },
         {
             "company": "SalesQueen Software Solutions",
-            "role": "Backend Intern",
-            "duration": "Sep 2024 - Dec 2024",
-            "description": "Focused on backend development with PHP and MySQL using CodeIgniter framework. Implemented secure database management and API integrations."
+            "role": "Backend Developer Intern",
+            "duration": "Oct 2024 - Dec 2024",
+            "description": "Developed server-side logic and RESTful APIs using PHP and the CodeIgniter framework. Optimized MySQL database schemas, implemented secure data handling protocols, and streamlined system integrations."
         },
         {
             "company": "SalesQueen Software Solutions",
             "role": "Full Stack Developer",
             "duration": "Jan 2025 - Present",
-            "description": "Transitioned to a full-time role as a Full Stack Developer, building scalable web applications and handling both frontend and backend tasks."
+            "description": "Engineered scalable web applications by bridging frontend responsiveness with robust backend architectures. Owned end-to-end feature development, optimized codebase performance, and integrated full-stack solutions to drive seamless user experiences."
         }
     ],
     "education": [
@@ -129,13 +131,15 @@
             "degree": "Diploma",
             "course": "Electronics and Communication Engineering",
             "status": "Completed",
-            "time": "2020 to 2023"
+            "time": "2020 to 2023",
+            "institution": "Sakthi Polytechnic College, Erode"
         },
         {
             "degree": "Bachelor",
             "course": "Bachelor of Computer Applications",
             "status": "Ongoing",
-            "time": "2025 to Present"
+            "time": "2025 to Present",
+            "institution": "JAIN University, Bengaluru"
         }
     ],
     "achievements": [
@@ -145,7 +149,8 @@
     "interests": [
         "Software Development",
         "Cricket",
-        "Athletics"
+        "Athletics",
+        "Building new things"
     ],
     "contact": {
         "email": "nsabarinathan.in@gmail.com",

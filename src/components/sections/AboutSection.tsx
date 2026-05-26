@@ -71,7 +71,7 @@ export default function AboutSection() {
               variants={fadeUp}
               className="text-[#8ba4b5] leading-relaxed mb-8"
             >
-              I specialize in developing secure and scalable applications, from e-commerce platforms to data-driven web solutions. My recent work includes backend security enhancements, real-time applications, and cloud integrations.
+              {data.subsummary}
             </motion.p>
 
             {/* Motivations */}
@@ -115,16 +115,18 @@ export default function AboutSection() {
                   <div key={edu.degree} className="flex justify-between items-start">
                     <div>
                       <p className="text-sm font-medium text-[#e8f4f8]">{edu.course}</p>
+                      <p className="text-sm text-[#8ba4b5]" >
+                        {edu.institution}
+                      </p>
                       <p className="text-xs text-[#4a6070]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
                         {edu.time}
                       </p>
                     </div>
                     <span
-                      className={`text-xs px-2 py-0.5 rounded-full ${
-                        edu.status === 'Ongoing'
+                      className={`text-xs px-2 py-0.5 rounded-full ${edu.status === 'Ongoing'
                           ? 'bg-[rgba(0,255,136,0.1)] text-[#00ff88] border border-[rgba(0,255,136,0.2)]'
                           : 'bg-[rgba(0,229,255,0.08)] text-[#00e5ff] border border-[rgba(0,229,255,0.15)]'
-                      }`}
+                        }`}
                       style={{ fontFamily: "'JetBrains Mono', monospace" }}
                     >
                       {edu.status}

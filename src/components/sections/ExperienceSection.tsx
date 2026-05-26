@@ -6,8 +6,8 @@ import { Briefcase, Calendar, MapPin } from 'lucide-react'
 import data from '@/data/portfolio.json'
 
 const roleColors = {
-  'Frontend Intern': '#00e5ff',
-  'Backend Intern': '#ffb700',
+  'Frontend Developer Intern': '#00e5ff',
+  'Backend Developer Intern': '#ffb700',
   'Full Stack Developer': '#00ff88',
 } as Record<string, string>
 
@@ -74,7 +74,7 @@ export default function ExperienceSection() {
                 >
                   {/* Timeline dot */}
                   <div
-                    className="absolute left-4 top-5 w-4 h-4 rounded-full border-2 bg-[#020408] -translate-x-1/2 flex items-center justify-center"
+                    className="absolute left-[1.5rem] top-5 w-4 h-4 rounded-full border-2 bg-[#020408] -translate-x-1/2 flex items-center justify-center"
                     style={{
                       borderColor: color,
                       boxShadow: isLatest ? `0 0 12px ${color}` : undefined,

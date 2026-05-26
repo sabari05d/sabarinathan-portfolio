@@ -19,22 +19,25 @@ function TypewriterRole() {
       return () => clearTimeout(t)
     }
     const current = ROLES[roleIndex]
+    let timeoutId
     if (!deleting) {
       if (displayed.length < current.length) {
-        const t = setTimeout(() => setDisplayed(current.slice(0, displayed.length + 1)), 60)
-        return () => clearTimeout(t)
+        timeoutId = setTimeout(() => {
+          setDisplayed(current.slice(0, displayed.length + 1))
+        }, 60)
       } else {
-        setPaused(true)
-        const t = setTimeout(() => setDeleting(true), 100)
-        return () => clearTimeout(t)
+        timeoutId = setTimeout(() => {
+          setDeleting(true)
+        }, 2000)
       }
     } else {
       if (displayed.length > 0) {
-        const t = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 35)
-        return () => clearTimeout(t)
+        timeoutId = setTimeout(() => {
+          setDisplayed(displayed.slice(0, -1))
+        }, 35)
       } else {
         setDeleting(false)
-        setRoleIndex((roleIndex + 1) % ROLES.length)
+        setRoleIndex((prevIndex) => (prevIndex + 1) % ROLES.length)
       }
     }
   }, [displayed, deleting, roleIndex, paused])
