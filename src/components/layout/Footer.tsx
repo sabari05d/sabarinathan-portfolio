@@ -12,7 +12,7 @@ export default function Footer() {
             <Terminal size={13} className="text-[#00e5ff]" />
           </div>
           <span
-            className="text-sm text-[#4a6070]"
+            className="text-sm text-[#6a87a0]"
             style={{ fontFamily: "'JetBrains Mono', monospace" }}
           >
             sabari<span className="text-[#00e5ff]">.</span>dev
@@ -20,7 +20,7 @@ export default function Footer() {
         </div>
 
         <p
-          className="text-xs text-[#4a6070] text-center"
+          className="text-xs text-[#6a87a0] text-center"
           style={{ fontFamily: "'JetBrains Mono', monospace" }}
         >
           © {new Date().getFullYear()} {data.name} · <span className="text-[#00e5ff]">//</span> building things that matter

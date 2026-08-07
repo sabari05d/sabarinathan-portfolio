@@ -23,21 +23,33 @@ export default function Navbar({ onCommandPalette }: NavbarProps) {
   const [activeSection, setActiveSection] = useState('')
 
   useEffect(() => {
-    const handleScroll = () => {
+    // Lightweight scroll listener for the navbar background shrink only.
+    const onScroll = () => {
       setScrolled(window.scrollY > 40)
-
-      // Active section detection
-      const sections = navLinks.map(l => l.href.replace('#', ''))
-      for (const id of sections.reverse()) {
-        const el = document.getElementById(id)
-        if (el && window.scrollY >= el.offsetTop - 120) {
-          setActiveSection(id)
-          break
-        }
-      }
+      if (window.scrollY < 120) setActiveSection('')
     }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
+
+    // Active section tracking via IntersectionObserver (no layout reads on scroll).
+    const ids = navLinks.map(l => l.href.replace('#', '')).filter(Boolean)
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActiveSection(entry.target.id)
+        }
+      },
+      { rootMargin: '-40% 0px -50% 0px', threshold: 0 }
+    )
+    ids.forEach(id => {
+      const el = document.getElementById(id)
+      if (el) observer.observe(el)
+    })
+
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      observer.disconnect()
+    }
   }, [])
 
   return (
@@ -109,8 +121,11 @@ export default function Navbar({ onCommandPalette }: NavbarProps) {
               Hire Me
             </a>
             <button
-              className="md:hidden p-2 text-[#8ba4b5] hover:text-[#e8f4f8]"
+              className="md:hidden p-2 text-[#6a87a0] hover:text-[#e8f4f8]"
               onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-menu"
             >
               {mobileOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -126,6 +141,7 @@ export default function Navbar({ onCommandPalette }: NavbarProps) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
+            id="mobile-menu"
             className="fixed inset-x-0 top-[65px] z-40 md:hidden bg-[rgba(6,13,20,0.97)] backdrop-blur-xl border-b border-[rgba(0,229,255,0.08)]"
           >
             <div className="px-6 py-4 flex flex-col gap-1">

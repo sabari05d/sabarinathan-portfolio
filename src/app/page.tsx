@@ -1,16 +1,19 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import dynamic from 'next/dynamic'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import HeroSection from '@/components/sections/HeroSection'
-import AboutSection from '@/components/sections/AboutSection'
-import ProjectsSection from '@/components/sections/ProjectsSection'
-import SkillsSection from '@/components/sections/SkillsSection'
-import ExperienceSection from '@/components/sections/ExperienceSection'
-import ContactSection from '@/components/sections/ContactSection'
-import CommandPalette from '@/components/ui/CommandPalette'
 import { SpeedInsights } from "@vercel/speed-insights/next"
+
+// Below-the-fold sections are code-split to reduce the initial client bundle.
+const AboutSection = dynamic(() => import('@/components/sections/AboutSection'))
+const ProjectsSection = dynamic(() => import('@/components/sections/ProjectsSection'))
+const SkillsSection = dynamic(() => import('@/components/sections/SkillsSection'))
+const ExperienceSection = dynamic(() => import('@/components/sections/ExperienceSection'))
+const ContactSection = dynamic(() => import('@/components/sections/ContactSection'))
+const CommandPalette = dynamic(() => import('@/components/ui/CommandPalette'))
 
 export default function Home() {
   const [cmdOpen, setCmdOpen] = useState(false)

@@ -1,9 +1,12 @@
 'use client'
 
 import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
-import { Briefcase, Calendar, MapPin } from 'lucide-react'
-import data from '@/data/portfolio.json'
+import { motion, useInView, useReducedMotion } from 'framer-motion'
+import { Calendar, MapPin } from 'lucide-react'
+import portfolioData from '@/data/portfolio.json'
+import type { Portfolio } from '@/types/portfolio'
+
+const data = portfolioData as Portfolio
 
 const roleColors = {
   'Frontend Developer Intern': '#00e5ff',
@@ -14,9 +17,10 @@ const roleColors = {
 export default function ExperienceSection() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
+  const reduce = useReducedMotion()
 
   return (
-    <section id="experience" ref={ref} className="relative py-32 px-6">
+    <section id="experience" ref={ref} className="relative py-20 sm:py-32 px-6">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_100%_30%,rgba(255,183,0,0.03)_0%,transparent_70%)]" />
 
       <div className="relative max-w-4xl mx-auto">
@@ -84,7 +88,7 @@ export default function ExperienceSection() {
                       <motion.div
                         className="w-1.5 h-1.5 rounded-full"
                         style={{ backgroundColor: color }}
-                        animate={{ scale: [1, 1.5, 1] }}
+                        animate={reduce ? { scale: 1 } : { scale: [1, 1.5, 1] }}
                         transition={{ duration: 2, repeat: Infinity }}
                       />
                     )}
@@ -117,11 +121,11 @@ export default function ExperienceSection() {
                           )}
                         </div>
                         <div className="flex items-center gap-1.5">
-                          <MapPin size={12} className="text-[#4a6070]" />
+                          <MapPin size={12} className="text-[#6a87a0]" />
                           <span className="text-sm font-semibold text-[#e8f4f8]">{exp.company}</span>
                         </div>
                       </div>
-                      <div className="flex items-center gap-1.5 text-xs text-[#4a6070]"
+                      <div className="flex items-center gap-1.5 text-xs text-[#6a87a0]"
                            style={{ fontFamily: "'JetBrains Mono', monospace" }}>
                         <Calendar size={12} />
                         {exp.duration}

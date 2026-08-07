@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState, useRef } from 'react'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { Github, Linkedin, Mail, ArrowDown, Zap, ChevronRight } from 'lucide-react'
 import data from '@/data/portfolio.json'
 
@@ -12,8 +12,14 @@ function TypewriterRole() {
   const [displayed, setDisplayed] = useState('')
   const [deleting, setDeleting] = useState(false)
   const [paused, setPaused] = useState(false)
+  const reduce = useReducedMotion()
 
   useEffect(() => {
+    // Reduced motion: show the first role statically, no typing loop.
+    if (reduce) {
+      setDisplayed(ROLES[0])
+      return
+    }
     if (paused) {
       const t = setTimeout(() => setPaused(false), 1600)
       return () => clearTimeout(t)
@@ -40,7 +46,7 @@ function TypewriterRole() {
         setRoleIndex((prevIndex) => (prevIndex + 1) % ROLES.length)
       }
     }
-  }, [displayed, deleting, roleIndex, paused])
+  }, [displayed, deleting, roleIndex, paused, reduce])
 
   return (
     <span className="text-[#00e5ff]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
@@ -52,11 +58,13 @@ function TypewriterRole() {
 
 // Floating particle
 function Particle({ x, y, delay, size }: { x: string; y: string; delay: number; size: number }) {
+  const reduce = useReducedMotion()
+
   return (
     <motion.div
       className="absolute rounded-full bg-[rgba(0,229,255,0.4)]"
       style={{ left: x, top: y, width: size, height: size }}
-      animate={{
+      animate={reduce ? false : {
         y: [0, -20, 0],
         opacity: [0.4, 1, 0.4],
         scale: [1, 1.3, 1],
@@ -84,6 +92,7 @@ const particles = [
 
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null)
+  const reduce = useReducedMotion()
 
   return (
     <section
@@ -112,9 +121,6 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          /* FIX 1: added 'mt-24' to prevent overlap with navbar.
-             FIX 2: changed to 'flex flex-col md:flex-row' for mobile stacking.
-          */
           className="mt-6 inline-flex flex-col md:flex-row items-center gap-1.5 md:gap-2.5 px-4 py-3 md:py-2 mb-8 rounded-2xl md:rounded-full bg-[rgba(0,255,136,0.06)] border border-[rgba(0,255,136,0.15)] text-sm"
         >
           <div className="flex items-center gap-2.5">
@@ -127,8 +133,7 @@ export default function HeroSection() {
             </span>
           </div>
 
-          {/* FIX 3: Hide the dot separator on mobile, show on desktop */}
-          <span className="hidden md:block text-[#4a6070]">·</span>
+          <span className="hidden md:block text-[#6a87a0]">·</span>
 
           <span className="text-[#8ba4b5] text-xs">Building at SalesQueen</span>
         </motion.div>
@@ -226,7 +231,7 @@ export default function HeroSection() {
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-2 text-[#4a6070] hover:text-[#00e5ff] transition-colors text-sm"
+              className="group flex items-center gap-2 text-[#6a87a0] hover:text-[#00e5ff] transition-colors text-sm"
               aria-label={label}
             >
               <Icon size={18} className="group-hover:scale-110 transition-transform" />
@@ -244,13 +249,13 @@ export default function HeroSection() {
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
         <span
-          className="text-xs text-[#4a6070] tracking-widest uppercase"
+          className="text-xs text-[#6a87a0] tracking-widest uppercase"
           style={{ fontFamily: "'JetBrains Mono', monospace" }}
         >
           scroll
         </span>
         <motion.div
-          animate={{ y: [0, 6, 0] }}
+          animate={reduce ? { y: 0 } : { y: [0, 6, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
         >
           <ArrowDown size={14} className="text-[rgba(0,229,255,0.4)]" />

@@ -1,9 +1,23 @@
 'use client'
 
-import { useRef, useState } from 'react'
-import { motion, useInView } from 'framer-motion'
-import { User, Target, Trophy, Heart } from 'lucide-react'
+import { useRef } from 'react'
+import { motion, useInView, useScroll, useTransform } from 'framer-motion'
+import {
+  Target,
+  Trophy,
+  Heart,
+  Briefcase,
+  GraduationCap,
+  Award,
+  Code2,
+  CheckCircle2,
+  Clock,
+  Sparkles,
+} from 'lucide-react'
 import data from '@/data/portfolio.json'
+import type { TimelineItem, Portfolio } from '@/types/portfolio'
+
+const typedData = data as Portfolio
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -14,12 +28,139 @@ const fadeUp = {
   }),
 }
 
-export default function AboutSection() {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
+// Category Badge Color Helper
+function getCategoryBadge(category: string) {
+  switch (category) {
+    case 'Experience':
+      return { color: 'text-[#00e5ff] bg-[rgba(0,229,255,0.1)] border-[rgba(0,229,255,0.25)]', icon: Briefcase }
+    case 'Education':
+      return { color: 'text-[#00ff88] bg-[rgba(0,255,136,0.1)] border-[rgba(0,255,136,0.25)]', icon: GraduationCap }
+    case 'Certification':
+      return { color: 'text-[#ffb700] bg-[rgba(255,183,0,0.1)] border-[rgba(255,183,0,0.25)]', icon: Award }
+    case 'Training':
+      return { color: 'text-[#a855f7] bg-[rgba(168,85,247,0.1)] border-[rgba(168,85,247,0.25)]', icon: Code2 }
+    default:
+      return { color: 'text-[#ff6b8a] bg-[rgba(255,107,138,0.1)] border-[rgba(255,107,138,0.25)]', icon: Sparkles }
+  }
+}
+
+function TimelineCard({ item, index }: { item: TimelineItem; index: number }) {
+  const cardRef = useRef(null)
+  const inView = useInView(cardRef, { once: true, margin: '-60px' })
+  const isEven = index % 2 === 0
+  const { color: catColor, icon: CatIcon } = getCategoryBadge(item.category)
 
   return (
-    <section id="about" ref={ref} className="relative py-32 px-6">
+    <div
+      ref={cardRef}
+      className={`relative flex flex-col md:flex-row items-center mb-12 ${isEven ? 'md:flex-row-reverse' : ''
+        }`}
+    >
+      {/* Spacer for two-column timeline */}
+      <div className="w-full md:w-1/2" />
+
+      {/* Center Timeline Point Icon */}
+      <div className="absolute left-4 md:left-1/2 -translate-x-1/2 z-10 flex items-center justify-center w-9 h-9 rounded-full bg-[#0a1520] border-2 border-[#00e5ff] shadow-[0_0_15px_rgba(0,229,255,0.4)]">
+        <CatIcon size={16} className="text-[#00e5ff]" />
+      </div>
+
+      {/* Card Body */}
+      <motion.div
+        initial={{ opacity: 0, x: isEven ? 50 : -50, y: 20 }}
+        animate={inView ? { opacity: 1, x: 0, y: 0 } : {}}
+        transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+        className={`w-full md:w-[calc(50%-2.5rem)] pl-12 md:pl-0 ${isEven ? 'md:pr-0' : 'md:pl-0'
+          }`}
+      >
+        <div className="p-6 rounded-2xl bg-[rgba(10,21,32,0.7)] border border-[rgba(0,229,255,0.08)] backdrop-blur-md shadow-xl hover:border-[rgba(0,229,255,0.2)] transition-all group">
+          {/* Top metadata */}
+          <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+            <span
+              className="text-xs text-[#00e5ff] font-semibold"
+              style={{ fontFamily: "'JetBrains Mono', monospace" }}
+            >
+              {item.period}
+            </span>
+
+            <div className="flex items-center gap-2">
+              <span
+                className={`inline-flex items-center gap-1 text-[10px] px-2.5 py-0.5 rounded-full font-medium border ${catColor}`}
+                style={{ fontFamily: "'JetBrains Mono', monospace" }}
+              >
+                <CatIcon size={10} />
+                {item.category}
+              </span>
+
+              <span
+                className={`inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full font-mono border ${item.status === 'Ongoing' || item.status === 'Active'
+                    ? 'text-[#00ff88] bg-[rgba(0,255,136,0.1)] border-[rgba(0,255,136,0.25)]'
+                    : 'text-[#8ba4b5] bg-[rgba(255,255,255,0.05)] border-[rgba(255,255,255,0.1)]'
+                  }`}
+              >
+                {item.status === 'Ongoing' || item.status === 'Active' ? (
+                  <Clock size={9} />
+                ) : (
+                  <CheckCircle2 size={9} />
+                )}
+                {item.status}
+              </span>
+            </div>
+          </div>
+
+          {/* Title & Org */}
+          <h4 className="text-lg font-bold text-[#e8f4f8] group-hover:text-white transition-colors">
+            {item.title}
+          </h4>
+          <p className="text-sm text-[#6a87a0] mb-3 font-medium">{item.organization}</p>
+
+          {/* Description */}
+          <p className="text-sm text-[#8ba4b5] leading-relaxed mb-4">{item.description}</p>
+
+          {/* Impact Metrics Grid (if available) */}
+          {item.metrics && item.metrics.length > 0 && (
+            <div className="grid grid-cols-2 gap-2 mb-4 p-3 rounded-xl bg-[rgba(0,229,255,0.03)] border border-[rgba(0,229,255,0.08)]">
+              {item.metrics.map((m, mIdx) => (
+                <div key={mIdx}>
+                  <div className="text-sm font-bold text-[#00e5ff]">{m.value}</div>
+                  <div className="text-[10px] text-[#8ba4b5] leading-tight">{m.label}</div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Tech tags */}
+          <div className="flex flex-wrap gap-1.5">
+            {item.tags.map((tag) => (
+              <span
+                key={tag}
+                className="text-[11px] px-2 py-0.5 rounded bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] text-[#8ba4b5] font-mono"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  )
+}
+
+export default function AboutSection() {
+  const ref = useRef(null)
+  const timelineRef = useRef<HTMLDivElement>(null)
+  const inView = useInView(ref, { once: true, margin: '-80px' })
+
+  // Scroll Progress Line Transformation
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ['start 80%', 'end 20%'],
+  })
+
+  const pathHeight = useTransform(scrollYProgress, [0, 1], ['0%', '100%'])
+  const timelineItems = typedData.timeline || []
+
+  return (
+    <section id="about" ref={ref} className="relative py-20 sm:py-32 px-6">
       {/* Background accent */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_0%_50%,rgba(0,229,255,0.04)_0%,transparent_70%)]" />
 
@@ -41,7 +182,8 @@ export default function AboutSection() {
           <div className="h-px w-16 bg-[rgba(0,229,255,0.3)]" />
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        {/* Existing Grid Section */}
+        <div className="grid lg:grid-cols-2 gap-16 items-center mb-32">
           {/* Left: Text content */}
           <div>
             <motion.h2
@@ -82,7 +224,12 @@ export default function AboutSection() {
               variants={fadeUp}
               className="grid grid-cols-2 gap-3"
             >
-              {['Building Scalable Web Apps', 'Exploring New Technologies', 'Learning & Sharing Knowledge', 'Fitness & Personal Growth'].map((m) => (
+              {[
+                'Building Scalable Web Apps',
+                'Exploring New Technologies',
+                'Learning & Sharing Knowledge',
+                'Fitness & Personal Growth',
+              ].map((m) => (
                 <div
                   key={m}
                   className="flex items-center gap-2.5 p-3 rounded-xl bg-[rgba(0,229,255,0.04)] border border-[rgba(0,229,255,0.08)]"
@@ -94,7 +241,7 @@ export default function AboutSection() {
             </motion.div>
           </div>
 
-          {/* Right: Stats / Info cards */}
+          {/* Right: Info Cards */}
           <div className="space-y-4">
             {/* Education */}
             <motion.div
@@ -112,13 +259,14 @@ export default function AboutSection() {
               </div>
               <div className="space-y-3">
                 {data.education.map((edu) => (
-                  <div key={edu.degree} className="flex justify-between items-start">
+                  <div key={edu.course} className="flex justify-between items-start">
                     <div>
                       <p className="text-sm font-medium text-[#e8f4f8]">{edu.course}</p>
-                      <p className="text-sm text-[#8ba4b5]" >
-                        {edu.institution}
-                      </p>
-                      <p className="text-xs text-[#4a6070]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+                      <p className="text-sm text-[#8ba4b5]">{edu.institution}</p>
+                      <p
+                        className="text-xs text-[#6a87a0]"
+                        style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                      >
                         {edu.time}
                       </p>
                     </div>
@@ -185,6 +333,35 @@ export default function AboutSection() {
                 ))}
               </div>
             </motion.div>
+          </div>
+        </div>
+
+        {/* --- SCROLL-DRIVEN TIMELINE SECTION --- */}
+        <div ref={timelineRef} className="relative pt-8">
+          <div className="text-center max-w-xl mx-auto mb-16">
+            <span
+              className="text-xs text-[#00e5ff] tracking-widest uppercase font-mono block mb-2"
+            >
+              Career & Journey
+            </span>
+            <h3 className="text-3xl md:text-4xl font-bold text-[#e8f4f8]">
+              The Story So Far
+            </h3>
+          </div>
+
+          {/* Timeline Center Beam Line */}
+          <div className="absolute left-4 md:left-1/2 top-28 bottom-0 -translate-x-1/2 w-0.5 bg-[rgba(255,255,255,0.06)]">
+            <motion.div
+              style={{ height: pathHeight }}
+              className="w-full bg-gradient-to-b from-[#00e5ff] via-[#00ff88] to-[#ffb700] shadow-[0_0_12px_#00e5ff]"
+            />
+          </div>
+
+          {/* Render Timeline Cards */}
+          <div className="relative">
+            {timelineItems.map((item, idx) => (
+              <TimelineCard key={item.title + idx} item={item} index={idx} />
+            ))}
           </div>
         </div>
       </div>

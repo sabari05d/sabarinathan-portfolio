@@ -9,6 +9,9 @@ export default function ContactSection() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
+  const normalizedMobile = data.contact.mobile.replace(/[\s-]/g, '')
+  const telHref = `tel:${normalizedMobile.startsWith('+') ? normalizedMobile : `+${normalizedMobile}`}`
+
   const contacts = [
     {
       icon: Mail,
@@ -31,24 +34,17 @@ export default function ContactSection() {
       href: data.contact.linkedin,
       color: '#0a66c2',
     },
-    // {
-    //   icon: Globe,
-    //   label: 'Portfolio',
-    //   value: 'sabarinathand.netlify.app',
-    //   href: data.contact.portfolio,
-    //   color: '#00ff88',
-    // },
     {
       icon: Phone,
       label: 'Mobile',
-      value: '+91 63802 86191',
-      href: `tel:+${data.contact.mobile}` ,
+      value: data.contact.mobile,
+      href: telHref,
       color: '#00ff88',
     },
   ]
 
   return (
-    <section id="contact" ref={ref} className="relative py-32 px-6">
+    <section id="contact" ref={ref} className="relative py-20 sm:py-32 px-6">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_100%,rgba(0,229,255,0.06)_0%,transparent_70%)]" />
 
       <div className="relative max-w-4xl mx-auto text-center">
@@ -130,7 +126,7 @@ export default function ContactSection() {
                   <Icon size={16} style={{ color: c.color }} />
                 </div>
                 <div className="min-w-0">
-                  <p className="text-xs text-[#4a6070] mb-0.5" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+                  <p className="text-xs text-[#6a87a0] mb-0.5" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
                     {c.label}
                   </p>
                   <p className="text-sm text-[#e8f4f8] truncate font-medium group-hover:text-white transition-colors">
@@ -139,7 +135,7 @@ export default function ContactSection() {
                 </div>
                 <ArrowRight
                   size={14}
-                  className="ml-auto text-[#4a6070] group-hover:text-[#00e5ff] group-hover:translate-x-0.5 transition-all flex-shrink-0"
+                  className="ml-auto text-[#6a87a0] group-hover:text-[#00e5ff] group-hover:translate-x-0.5 transition-all flex-shrink-0"
                 />
               </motion.a>
             )

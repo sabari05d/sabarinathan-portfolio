@@ -2,74 +2,28 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import data from '@/data/portfolio.json'
+import portfolioData from '@/data/portfolio.json'
+import type { SkillGroup, Portfolio } from '@/types/portfolio'
 
-// Categorized skill groups for bento layout
-const skillGroups = [
-  {
-    label: 'Frontend',
-    skills: ['React', 'Next.js', 'JavaScript', 'HTML', 'CSS', 'Bootstrap'],
-    color: '#00e5ff',
-    icon: '⚡',
-    size: 'col-span-2 row-span-1',
-  },
-  {
-    label: 'Backend',
-    skills: ['Java', 'PHP', 'Python', 'C'],
-    color: '#00ff88',
-    icon: '🔧',
-    size: 'col-span-1 row-span-1',
-  },
-  {
-    label: 'Frameworks',
-    skills: ['Laravel', 'CodeIgniter', 'Django', 'Fast API', 'Spring Boot'],
-    color: '#ffb700',
-    icon: '📦',
-    size: 'col-span-1 row-span-1',
-  },
-  {
-    label: 'Database & Cloud',
-    skills: ['MySQL', 'Postgresql', 'AWS (Cloud Foundations)'],
-    color: '#ff6b8a',
-    icon: '☁️',
-    size: 'col-span-2 row-span-1',
-  },
-]
+export type { SkillGroup }
 
-// Individual skill badge with proficiency mapping
-const proficiencyMap: Record<string, number> = {
-  React: 90,
-  'Next.js': 80,
-  JavaScript: 88,
-  HTML: 95,
-  CSS: 90,
-  Bootstrap: 85,
-  Java: 80,
-  'Spring Boot': 78,
-  PHP: 90,
-  Python: 70,
-  CodeIgniter: 90,
-  Laravel: 85,
-  Django: 70,
-  'Fast API': 75,
-  MySQL: 85,
-  'Postgresql': 80,
-  'AWS (Cloud Foundations)': 60,
-}
+const data = portfolioData as Portfolio
 
 function SkillBadge({ skill, color }: { skill: string; color: string }) {
-  const pct = proficiencyMap[skill] ?? 70
+  const proficiencies = data.skills.proficiencies || {}
+  const pct = proficiencies[skill] ?? 70
+
   return (
     <div className="group relative">
       <div className="flex items-center justify-between mb-1.5">
         <span
-          className="text-xs font-medium text-[#e8f4f8]"
+          className="text-xs font-medium text-[#e8f4f8] truncate pr-2"
           style={{ fontFamily: "'JetBrains Mono', monospace" }}
         >
           {skill}
         </span>
         <span
-          className="text-xs opacity-0 group-hover:opacity-100 transition-opacity"
+          className="text-xs opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0"
           style={{ color, fontFamily: "'JetBrains Mono', monospace" }}
         >
           {pct}%
@@ -89,89 +43,89 @@ function SkillBadge({ skill, color }: { skill: string; color: string }) {
   )
 }
 
-function BentoCard({
-  group,
-  delay,
-}: {
-  group: typeof skillGroups[0]
-  delay: number
-}) {
+function BentoCard({ group, delay }: { group: SkillGroup; delay: number }) {
+  // Use responsive span overrides or default to single column
+  const spanClass = group.span || 'lg:col-span-1'
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] }}
-      className={`${group.size} relative p-6 rounded-2xl bg-[rgba(10,21,32,0.7)] border border-[rgba(0,229,255,0.08)] backdrop-blur-sm overflow-hidden group hover:border-[rgba(0,229,255,0.15)] transition-all duration-300`}
+      className={`col-span-1 ${spanClass} relative p-5 sm:p-6 rounded-2xl bg-[rgba(10,21,32,0.7)] border border-[rgba(0,229,255,0.08)] backdrop-blur-sm overflow-hidden group hover:border-[rgba(0,229,255,0.18)] transition-all duration-300 flex flex-col justify-between`}
     >
       {/* Background glow */}
       <div
-        className="absolute top-0 right-0 w-32 h-32 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-3xl"
+        className="absolute top-0 right-0 w-32 h-32 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-3xl pointer-events-none"
         style={{ backgroundColor: `${group.color}18` }}
       />
 
-      {/* Header */}
-      <div className="flex items-center gap-3 mb-5">
-        <span className="text-2xl">{group.icon}</span>
-        <div>
-          <h3 className="font-bold text-[#e8f4f8] text-sm">{group.label}</h3>
-          <span
-            className="text-xs"
-            style={{ color: group.color, fontFamily: "'JetBrains Mono', monospace" }}
-          >
-            {group.skills.length} techs
-          </span>
+      <div>
+        {/* Card Header */}
+        <div className="flex items-center gap-3 mb-5">
+          <span className="text-2xl">{group.icon}</span>
+          <div className="min-w-0">
+            <h3 className="font-bold text-[#e8f4f8] text-sm sm:text-base truncate">{group.label}</h3>
+            <span
+              className="text-xs block"
+              style={{ color: group.color, fontFamily: "'JetBrains Mono', monospace" }}
+            >
+              {group.skills.length} techs
+            </span>
+          </div>
+          <div
+            className="ml-auto w-2 h-2 rounded-full flex-shrink-0"
+            style={{ backgroundColor: group.color, boxShadow: `0 0 8px ${group.color}` }}
+          />
         </div>
-        <div
-          className="ml-auto w-1.5 h-1.5 rounded-full"
-          style={{ backgroundColor: group.color, boxShadow: `0 0 8px ${group.color}` }}
-        />
-      </div>
 
-      {/* Skills */}
-      <div className="space-y-3">
-        {group.skills.map((skill) => (
-          <SkillBadge key={skill} skill={skill} color={group.color} />
-        ))}
+        {/* Skills list inside card */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-3">
+          {group.skills.map((skill) => (
+            <SkillBadge key={skill} skill={skill} color={group.color} />
+          ))}
+        </div>
       </div>
     </motion.div>
   )
 }
 
-// Terminal-style skill cloud
-function SkillCloud() {
+function SkillCloud({ allSkills }: { allSkills: string[] }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: 0.4 }}
-      className="p-6 rounded-2xl bg-[rgba(6,13,20,0.8)] border border-[rgba(0,229,255,0.08)] font-mono"
+      transition={{ duration: 0.6, delay: 0.3 }}
+      className="p-5 sm:p-6 rounded-2xl bg-[rgba(6,13,20,0.8)] border border-[rgba(0,229,255,0.08)] font-mono"
       style={{ fontFamily: "'JetBrains Mono', monospace" }}
     >
       <div className="flex items-center gap-2 mb-4">
         <div className="w-2.5 h-2.5 rounded-full bg-[rgba(255,71,87,0.6)]" />
         <div className="w-2.5 h-2.5 rounded-full bg-[rgba(255,183,0,0.6)]" />
         <div className="w-2.5 h-2.5 rounded-full bg-[rgba(0,255,136,0.6)]" />
-        <span className="text-xs text-[#4a6070] ml-2">tech-stack.sh</span>
+        <span className="text-xs text-[#6a87a0] ml-2">tech-stack.sh</span>
       </div>
-      <div className="text-sm">
-        <div className="text-[#4a6070]">$ <span className="text-[#8ba4b5]">echo $SKILLS</span></div>
-        <div className="mt-2 flex flex-wrap gap-2">
-          {data.skills.map((skill) => (
+      <div className="text-xs sm:text-sm">
+        <div className="text-[#6a87a0]">
+          $ <span className="text-[#8ba4b5]">echo $SKILLS</span>
+        </div>
+        <div className="mt-3 flex flex-wrap gap-1.5 sm:gap-2">
+          {allSkills.map((skill) => (
             <span
               key={skill}
-              className="text-xs px-2 py-1 rounded-md bg-[rgba(0,229,255,0.05)] border border-[rgba(0,229,255,0.1)] text-[#00e5ff] hover:bg-[rgba(0,229,255,0.1)] transition-colors cursor-default"
+              className="text-[11px] sm:text-xs px-2.5 py-1 rounded-md bg-[rgba(0,229,255,0.05)] border border-[rgba(0,229,255,0.1)] text-[#00e5ff] hover:bg-[rgba(0,229,255,0.1)] transition-colors cursor-default"
             >
               {skill}
             </span>
           ))}
         </div>
-        <div className="mt-4 text-[#4a6070]">
-          $ <span className="text-[#00ff88]">// {data.skills.length} technologies and counting...</span>
+        <div className="mt-4 text-[#6a87a0]">
+          $ <span className="text-[#00ff88]">// {allSkills.length} technologies and counting...</span>
         </div>
         <div className="mt-1 flex items-center gap-1">
-          <span className="text-[#4a6070]">$</span>
+          <span className="text-[#6a87a0]">$</span>
           <span className="w-2 h-4 bg-[#00e5ff] animate-[blink_1.2s_step-end_infinite] inline-block" />
         </div>
       </div>
@@ -183,12 +137,15 @@ export default function SkillsSection() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
+  const skillGroups = data.skills.groups || []
+  const allSkills = Array.from(new Set(skillGroups.flatMap((g) => g.skills)))
+
   return (
-    <section id="skills" ref={ref} className="relative py-32 px-6">
+    <section id="skills" ref={ref} className="relative py-20 sm:py-32 px-4 sm:px-6">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_30%_50%,rgba(0,229,255,0.04)_0%,transparent_70%)]" />
 
       <div className="relative max-w-7xl mx-auto">
-        {/* Header */}
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -208,31 +165,26 @@ export default function SkillsSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-4xl md:text-5xl font-bold mb-12"
+          className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12"
         >
           Tools of the{' '}
-          <span className="text-transparent bg-clip-text" style={{ backgroundImage: 'linear-gradient(135deg, #00e5ff, #ffb700)' }}>
+          <span
+            className="text-transparent bg-clip-text"
+            style={{ backgroundImage: 'linear-gradient(135deg, #00e5ff, #ffb700)' }}
+          >
             Trade
           </span>
         </motion.h2>
 
-        {/* Bento grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {/* Large frontend card */}
-          <div className="md:col-span-2">
-            <BentoCard group={skillGroups[0]} delay={0.1} />
-          </div>
-          {/* Backend */}
-          <BentoCard group={skillGroups[1]} delay={0.15} />
-          {/* Frameworks */}
-          <BentoCard group={skillGroups[2]} delay={0.2} />
-          {/* Database & Cloud */}
-          <div className="md:col-span-2">
-            <BentoCard group={skillGroups[3]} delay={0.25} />
-          </div>
-          {/* Terminal skill cloud - spans full row */}
-          <div className="md:col-span-3">
-            <SkillCloud />
+        {/* Bento Responsive Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {skillGroups.map((group, idx) => (
+            <BentoCard key={group.label} group={group} delay={0.05 + idx * 0.05} />
+          ))}
+
+          {/* Terminal Skill Cloud - Full Width */}
+          <div className="col-span-1 sm:col-span-2 lg:col-span-3">
+            <SkillCloud allSkills={allSkills} />
           </div>
         </div>
       </div>

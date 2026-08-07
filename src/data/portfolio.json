@@ -26,86 +26,256 @@
     },
     "projects": [
         {
-            "name": "Habit Tracker (TrackerX)",
-            "description": "A gamified habit-tracking application featuring an XP-based leveling system and real-time progress analytics.",
-            "code": "https://github.com/sabari05d/trackerX",
-            "link": "https://trackerxx.vercel.app/",
+            "title": "Yehova",
+            "industry": "Fresh Banana Leaf Farming & Supply",
+            "challenge": "The client needed a modern online presence to showcase their banana leaf products and simplify the bulk ordering process. They required an intuitive way for customers to submit inquiries without the expense and maintenance overhead of a traditional backend system.",
+            "solution": "Developed a fast, responsive landing page using Next.js and Tailwind CSS that displays product catalogs and company details. Integrated an automated submission pipeline that routes customer orders directly into Google Sheets, delivering a lightweight, cost-effective solution deployed seamlessly on Vercel.",
+            "technologies": [
+                "Next.js",
+                "React",
+                "Tailwind CSS",
+                "Google Sheets",
+                "Vercel",
+                "Git"
+            ],
+            "features": [
+                "Responsive landing page with modern UI and smooth user experience",
+                "Product showcase with business information and contact details",
+                "Order form integrated with Google Sheets for automatic order collection",
+                "SEO-friendly Next.js architecture for improved discoverability",
+                "Fast deployment and continuous updates using Vercel and Git"
+            ],
+            "status": "Live",
+            "placeholder": false,
+            "type": "Client",
+            "link": "https://yohovabananaleaves.vercel.app"
+        },
+        {
+            "title": "NexTrade (Global B2B Trade Network)",
+            "industry": "International Trade & B2B Marketplace",
+            "challenge": "Bulk product sourcing across international markets is often fragmented, leaving businesses reliant on limited suppliers and vulnerable to supply chain disruptions. Finding verified global trade partners typically involves complex research across disjointed communication channels.",
+            "solution": "Engineered a cross-platform B2B marketplace using Next.js, Supabase, and PostgreSQL to connect manufacturers, exporters, and bulk buyers worldwide. The platform enables users to discover verified partners, issue multi-supplier RFQs, and manage global supply chain connections through a unified web and mobile interface.",
+            "technologies": [
+                "Next.js",
+                "React",
+                "Tailwind CSS",
+                "Capacitor",
+                "Supabase",
+                "PostgreSQL",
+                "Vercel",
+                "Git"
+            ],
+            "features": [
+                "Global buyer and supplier directory with advanced search and filtering",
+                "Bulk RFQ (Request for Quotation) system for sourcing products from multiple suppliers",
+                "Company verification and business profiles to build trust",
+                "Real-time messaging and inquiry management",
+                "Product catalog with categories, certifications, and export capabilities",
+                "Supplier comparison based on pricing, ratings, and delivery regions",
+                "Cross-platform web and Android application using Capacitor",
+                "Admin dashboard for verification, moderation, and platform management"
+            ],
+            "status": "In Development",
+            "placeholder": false,
+            "type": "Client"
+        },
+        {
+            "title": "Habit Tracker (TrackerX)",
+            "industry": "Personal Productivity & Gamification",
+            "challenge": "Standard habit tracking applications frequently lack engaging retention mechanics, leading to low long-term user consistency and limited visibility into personal growth trends. Users require an interactive approach to build routine accountability effectively.",
+            "solution": "Built a gamified web application that transforms daily habit completion into a progression system powered by dynamic experience points (XP) and level mechanics. Utilizing Next.js and Supabase, the app delivers real-time analytics dashboards that visualize personal progress trends and habit streaks over time.",
             "technologies": [
                 "React",
                 "Next.js",
                 "Tailwind CSS",
                 "Supabase"
-            ]
+            ],
+            "features": [
+                "XP-based gamification system with real-time level progression",
+                "Interactive habits dashboard with automated completion tracking",
+                "Visual analytics charts tracking historical user consistency",
+                "Secure user authentication and cloud data syncing via Supabase",
+                "Fully responsive user interface tailored for daily mobile and desktop use"
+            ],
+            "status": "Live",
+            "placeholder": false,
+            "type": "Personal",
+            "link": "https://trackerxx.vercel.app",
+            "code": "https://github.com/sabari05d/trackerX"
         },
         {
-            "name": "Trading Research App",
-            "description": "A data-driven platform designed to analyze market trends and streamline technical research for traders.",
-            "code": "https://github.com/sabari05d/sentinal_trading_research_app",
-            "link": "",
+            "title": "Trading Research App (Sentinel)",
+            "industry": "Financial Technology & Market Analytics",
+            "challenge": "Traders often battle scattered market data and slow, manual chart evaluation processes when attempting to conduct rapid technical research across fluctuating assets. Efficient decision-making requires consolidated market indicators and streamlined data rendering.",
+            "solution": "Created a data-driven research application combining a FastAPI backend with a React dynamic frontend to ingest and parse real-time market feeds. The platform renders customizable technical charts via Recharts, empowering traders to monitor trends, evaluate patterns, and accelerate analytical research.",
             "technologies": [
                 "React",
                 "FastAPI",
                 "Next.js",
                 "Recharts",
                 "Financial APIs"
-            ]
+            ],
+            "features": [
+                "Real-time market data retrieval via external financial API integration",
+                "Interactive candlestick and technical indicator charts powered by Recharts",
+                "Fast API backend for efficient processing of high-volume market datasets",
+                "Customizable watchlist and asset search capabilities",
+                "Responsive trading analytical dashboard optimized for desktop monitoring"
+            ],
+            "status": "In Development",
+            "placeholder": false,
+            "type": "Personal",
+            "link": "https://thesentinaliq.vercel.app/",
+            "code": "https://github.com/sabari05d/sentinal_iq_swing_trade"
         },
         {
-            "name": "Quotes Display App",
-            "description": "An application that displays random quotes to inspire users.",
-            "code": "https://github.com/sabari05d/Quotes_Display_App",
-            "link": "https://quotes-display-app.vercel.app/",
+            "title": "Quotes Display App",
+            "industry": "Media & Personal Inspiration",
+            "challenge": "Users seeking quick daily motivation often face heavy, ad-cluttered quote applications that suffer from slow load times and convoluted navigation setups.",
+            "solution": "Developed a minimal, highly responsive React application focused on instantly rendering inspirational quotes upon user interaction. The platform utilizes lightweight state management to fetch dynamic content without unnecessary dynamic layout shifts or performance lag.",
             "technologies": [
-                "React"
-            ]
+                "React",
+                "JavaScript",
+                "CSS3",
+                "Vercel"
+            ],
+            "features": [
+                "Instant random quote generation with single-click refreshing",
+                "Clean, distraction-free minimalist user interface",
+                "One-click text copy functionality for seamless content sharing",
+                "Fast client-side state handling with zero load latency",
+                "Fully responsive layout optimized across all modern viewports"
+            ],
+            "status": "Live",
+            "placeholder": false,
+            "type": "Personal",
+            "link": "https://quotes-display-app.vercel.app",
+            "code": "https://github.com/sabari05d/Quotes_Display_App"
         },
         {
-            "name": "Recipe Finder App",
-            "description": "An app to search and display recipes based on user input.",
-            "code": "https://github.com/sabari05d/recipe_finder_app",
-            "link": "",
+            "title": "Recipe Finder App",
+            "industry": "Culinary & Lifestyle Software",
+            "challenge": "Finding tailored cooking recipes based on specific home ingredients often requires navigating ad-dense websites with complex filtering options.",
+            "solution": "Engineered an intuitive React application that allows users to query dietary preferences and kitchen ingredients to surface tailored cooking recipes instantaneously. The interface provides structured instructions, preparation timing, and clear ingredient lists.",
             "technologies": [
-                "React"
-            ]
-        },
-        {
-            "name": "Image Gallery with Filtering",
-            "description": "An interactive image gallery with category-based filtering.",
-            "code": "https://github.com/sabari05d/Image-Gallery-Filtering",
-            "link": "",
-            "technologies": [
-                "React"
-            ]
-        },
-        {
-            "name": "Todo List App",
-            "description": "A simple and intuitive todo list application to manage daily tasks.",
-            "code": "https://github.com/sabari05d/Todo_List_App",
-            "link": "",
-            "technologies": [
-                "React"
-            ]
+                "React",
+                "JavaScript",
+                "REST APIs",
+                "Tailwind CSS"
+            ],
+            "features": [
+                "Dynamic ingredient and keyword-based recipe search querying",
+                "Detailed recipe views complete with step-by-step instructions and ingredient lists",
+                "Client-side API caching to prevent redundant data requests",
+                "Categorized search filter presets for quick meal discovery",
+                "Mobile-friendly interface built for convenient kitchen usage"
+            ],
+            "status": "Completed",
+            "placeholder": false,
+            "type": "Personal",
+            "code": "https://github.com/sabari05d/recipe_finder_app"
         }
     ],
-    "skills": [
-        "React",
-        "Next.js",
-        "PHP",
-        "Python",
-        "Java",
-        "JavaScript",
-        "HTML",
-        "CSS",
-        "Bootstrap",
-        "CodeIgniter",
-        "Laravel",
-        "Fast API",
-        "Django",
-        "Spring Boot",
-        "MySQL",
-        "Postgresql",
-        "AWS (Cloud Foundations)"
-    ],
+    "skills": {
+        "groups": [
+            {
+                "label": "AI & Automation",
+                "color": "#ff6b8a",
+                "icon": "✨",
+                "span": "lg:col-span-1",
+                "skills": [
+                    "OpenAI",
+                    "Gemini",
+                    "Claude",
+                    "Opencode",
+                    "Omniroute",
+                    "Ollama"
+                ]
+            },
+            {
+                "label": "Frontend",
+                "color": "#00e5ff",
+                "icon": "⚡",
+                "span": "lg:col-span-1",
+                "skills": [
+                    "React",
+                    "Next.js",
+                    "JavaScript",
+                    "HTML",
+                    "CSS",
+                    "Bootstrap & Tailwild"
+                ]
+            },
+            {
+                "label": "Backend Languages",
+                "color": "#00ff88",
+                "icon": "🔧",
+                "span": "lg:col-span-1",
+                "skills": [
+                    "Java",
+                    "PHP",
+                    "Python",
+                    "C"
+                ]
+            },
+            {
+                "label": "Frameworks",
+                "color": "#ffb700",
+                "icon": "📦",
+                "span": "lg:col-span-2",
+                "skills": [
+                    "Laravel",
+                    "CodeIgniter",
+                    "Django",
+                    "Fast API",
+                    "Node.js",
+                    "Spring Boot"
+                ]
+            },
+            {
+                "label": "Database & Cloud",
+                "color": "#38bdf8",
+                "icon": "☁️",
+                "span": "lg:col-span-1",
+                "skills": [
+                    "MySQL",
+                    "PostgreSQL",
+                    "AWS (Cloud Foundations)",
+                    "Docker",
+                    "Git & Github"
+                ]
+            }
+        ],
+        "proficiencies": {
+            "React": 90,
+            "Next.js": 80,
+            "JavaScript": 88,
+            "HTML": 95,
+            "CSS": 90,
+            "Bootstrap & Tailwild": 85,
+            "Java": 80,
+            "Spring Boot": 78,
+            "PHP": 90,
+            "Python": 70,
+            "C": 65,
+            "CodeIgniter": 90,
+            "Laravel": 85,
+            "Django": 70,
+            "Node.js": 70,
+            "Fast API": 75,
+            "MySQL": 85,
+            "PostgreSQL": 80,
+            "AWS (Cloud Foundations)": 60,
+            "Docker": 70,
+            "Git & Github": 85,
+            "OpenAI": 70,
+            "Gemini": 70,
+            "Claude": 70,
+            "Opencode": 70,
+            "Omniroute": 70,
+            "Ollama": 70
+        }
+    },
     "experience": [
         {
             "company": "SalesQueen Software Solutions",
@@ -156,7 +326,135 @@
         "email": "nsabarinathan.in@gmail.com",
         "linkedin": "https://www.linkedin.com/in/sabarinathan-d",
         "github": "https://github.com/sabari05d",
-        "mobile": "+91 6380286191",
-        "portfolio": "https://sabarinathand.netlify.app/"
-    }
+        "mobile": "+91 6380286191"
+    },
+    "timeline": [
+        {
+            "period": "Jun 2020 - May 2023",
+            "title": "Diploma in Electronics & Communication",
+            "organization": "Sakthi Polytechnic College, Erode",
+            "category": "Education",
+            "status": "Completed",
+            "description": "Built strong foundations in core hardware, microcontrollers, signal processing, and analytical problem-solving.",
+            "tags": [
+                "Electronics",
+                "Embedded Systems",
+                "Hardware Logic"
+            ],
+            "metrics": []
+        },
+        {
+            "period": "July 2022",
+            "title": "AWS Academy Cloud Foundations",
+            "organization": "AWS Academy",
+            "category": "Certification",
+            "status": "Certified",
+            "description": "Gained practical knowledge in cloud infrastructure, core AWS services (EC2, S3, RDS), IAM security, and cloud architecture principles.",
+            "tags": [
+                "AWS",
+                "EC2",
+                "S3",
+                "RDS",
+                "Cloud Security"
+            ],
+            "metrics": []
+        },
+        {
+            "period": "Jul 2023 - May 2024",
+            "title": "Java Full Stack Development Course",
+            "organization": "Jspiders, Bengaluru",
+            "category": "Training",
+            "status": "Completed",
+            "description": "Completed an intensive full-stack development program focused on Java enterprise software, object-oriented design, databases, and modern web application development.",
+            "tags": [
+                "Java",
+                "Spring Boot",
+                "React.js",
+                "SQL",
+                "Web Technologies"
+            ],
+            "metrics": []
+        },
+        {
+            "period": "Jul 2024 - Dec 2024",
+            "title": "Full Stack Developer Intern",
+            "organization": "Salesqueen Software Solutions",
+            "category": "Experience",
+            "status": "Completed",
+            "description": "Analyzed complex ERP architectures, debugged legacy code, optimized SQL database queries, and mastered enterprise production workflows, leading directly to a full-time offer.",
+            "tags": [
+                "PHP",
+                "Laravel",
+                "React.js",
+                "CodeIgniter",
+                "MySQL"
+            ],
+            "metrics": []
+        },
+        {
+            "period": "Jan 2025 - Present",
+            "title": "Full Stack Developer",
+            "organization": "Salesqueen Software Solutions",
+            "category": "Experience",
+            "status": "Ongoing",
+            "description": "Architected and deployed an enterprise B2B Manufacturing & ERP Suite serving 15+ clients, engineered an automated biochemical recipe mix calculator, and built real-time WebSocket P&L analytics dashboards.",
+            "tags": [
+                "React.js",
+                "PHP",
+                "Laravel",
+                "WebSockets",
+                "Razorpay",
+                "WhatsApp API"
+            ],
+            "metrics": [
+                {
+                    "label": "Clients Served",
+                    "value": "15+"
+                },
+                {
+                    "label": "Daily Orders Processed",
+                    "value": "500+"
+                },
+                {
+                    "label": "Calculator Accuracy",
+                    "value": "99.2%"
+                },
+                {
+                    "label": "Reconciliation Time Reduced",
+                    "value": "60%"
+                }
+            ]
+        },
+        {
+            "period": "Jul 2025 - Jul 2028",
+            "title": "Bachelor of Computer Applications (BCA)",
+            "organization": "Jain University, Bengaluru",
+            "category": "Education",
+            "status": "Ongoing",
+            "description": "Formalizing computer science foundations, software engineering, and database systems while working full-time in production software development.",
+            "tags": [
+                "Computer Science",
+                "Database Systems",
+                "Software Engineering"
+            ],
+            "metrics": []
+        },
+        {
+            "period": "Current / Ongoing",
+            "title": "High-Impact Engineering & AI Projects",
+            "organization": "Independent Engineering",
+            "category": "Projects",
+            "status": "Active",
+            "description": "Engineering Sentinel (quantitative market intelligence terminal), Habit Tracker (cross-platform web/Android app), and JARVIS-Lite (voice-driven local AI assistant using Ollama, Llama 3.2, and Whisper).",
+            "tags": [
+                "Python",
+                "FastAPI",
+                "Ollama",
+                "Whisper",
+                "Supabase",
+                "Capacitor"
+            ],
+            "metrics": []
+        }
+    ]
 }
