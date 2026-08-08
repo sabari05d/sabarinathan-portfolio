@@ -44,7 +44,7 @@ export interface Contact {
   linkedin: string
   github: string
   mobile: string
-  portfolio: string
+  portfolio?: string
 }
 
 export interface Metric {
