@@ -2,7 +2,7 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Mail, Github, Linkedin, Globe, Send, ArrowRight,Phone } from 'lucide-react'
+import { Mail, Github, Linkedin, Globe, Send, ArrowRight, Phone, FileText } from 'lucide-react'
 import data from '@/data/portfolio.json'
 
 export default function ContactSection() {
@@ -40,6 +40,13 @@ export default function ContactSection() {
       value: data.contact.mobile,
       href: telHref,
       color: '#00ff88',
+    },
+    {
+      icon: FileText,
+      label: 'Resume',
+      value: 'Download Resume',
+      href: data.contact.resume,
+      color: '#00e5ff',
     },
   ]
 

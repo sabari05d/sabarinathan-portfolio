@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
-import { Github, Linkedin, Mail, ArrowDown, Zap, ChevronRight } from 'lucide-react'
+import { Github, Linkedin, Mail, ArrowDown, Zap, ChevronRight, FileText } from 'lucide-react'
 import data from '@/data/portfolio.json'
 
 const ROLES = data.landing.roles
@@ -225,6 +225,7 @@ export default function HeroSection() {
             { href: data.contact.github, Icon: Github, label: 'GitHub' },
             { href: data.contact.linkedin, Icon: Linkedin, label: 'LinkedIn' },
             { href: `mailto:${data.contact.email}`, Icon: Mail, label: 'Email' },
+            { href: data.contact.resume, Icon: FileText, label: 'Resume' },
           ].map(({ href, Icon, label }) => (
             <a
               key={label}

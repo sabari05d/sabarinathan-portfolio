@@ -1,7 +1,7 @@
 {
     "name": "Sabarinathan D",
     "title": "Full Stack Developer",
-    "summary": "Full Stack Developer focused on building scalable, high-performance web applications using Java, Spring Boot, React, and PHP (CodeIgniter). Passionate about clean architecture, performance optimization, and creating seamless user experiences. Strong believer in systems thinking and continuous learning.",
+    "summary": "Full Stack Developer focused on building scalable, high-performance web applications using React, Next.js, and PHP (Laravel/CodeIgniter), Python (FastAPI/Django), Java, Spring Boot. Passionate about clean architecture, performance optimization, and creating seamless user experiences. Strong believer in systems thinking and continuous learning.",
     "subsummary": "I specialize in developing secure and scalable applications, from e-commerce platforms to data-driven web solutions. My recent work includes backend security enhancements, real-time applications, and cloud integrations.",
     "landing": {
         "title": "Sabarinathan D",
@@ -184,8 +184,8 @@
                 "icon": "✨",
                 "span": "lg:col-span-1",
                 "skills": [
-                    "OpenAI",
                     "Gemini",
+                    "OpenAI",
                     "Claude",
                     "Opencode",
                     "Omniroute",
@@ -212,9 +212,9 @@
                 "icon": "🔧",
                 "span": "lg:col-span-1",
                 "skills": [
-                    "Java",
                     "PHP",
                     "Python",
+                    "Java",
                     "C"
                 ]
             },
@@ -253,7 +253,7 @@
             "HTML": 95,
             "CSS": 90,
             "Bootstrap & Tailwild": 85,
-            "Java": 80,
+            "Java": 70,
             "Spring Boot": 78,
             "PHP": 90,
             "Python": 70,
@@ -268,12 +268,12 @@
             "AWS (Cloud Foundations)": 60,
             "Docker": 70,
             "Git & Github": 85,
-            "OpenAI": 70,
-            "Gemini": 70,
+            "Gemini": 80,
+            "OpenAI": 75,
             "Claude": 70,
-            "Opencode": 70,
-            "Omniroute": 70,
-            "Ollama": 70
+            "Opencode": 80,
+            "Omniroute": 75,
+            "Ollama": 65
         }
     },
     "experience": [
@@ -298,18 +298,29 @@
     ],
     "education": [
         {
-            "degree": "Diploma",
-            "course": "Electronics and Communication Engineering",
-            "status": "Completed",
-            "time": "2020 to 2023",
-            "institution": "Sakthi Polytechnic College, Erode"
+            "degree": "BCA",
+            "course": "Bachelor of Computer Applications",
+            "mode": "Online / Distance",
+            "status": "Ongoing",
+            "time": "2025 – Present",
+            "institution": "JAIN University, Bengaluru",
+            "score": "8.86 CGPA",
+            "highlights": [
+                "Focus Areas: Computer Architecture, Database Systems, Web Development",
+                "Balancing full-time software development with academic studies"
+            ]
         },
         {
-            "degree": "Bachelor",
-            "course": "Bachelor of Computer Applications",
-            "status": "Ongoing",
-            "time": "2025 to Present",
-            "institution": "JAIN University, Bengaluru"
+            "degree": "Diploma",
+            "course": "Electronics and Communication Engineering",
+            "mode": "Full-time",
+            "status": "Completed",
+            "time": "2020 – 2023",
+            "institution": "Sakthi Polytechnic College, Erode",
+            "score": "87%",
+            "highlights": [
+                "Foundational hardware design, embedded systems, and microcontrollers"
+            ]
         }
     ],
     "achievements": [
@@ -326,7 +337,8 @@
         "email": "nsabarinathan.in@gmail.com",
         "linkedin": "https://www.linkedin.com/in/sabarinathan-d",
         "github": "https://github.com/sabari05d",
-        "mobile": "+91 6380286191"
+        "mobile": "+91 6380286191",
+        "resume": "https://drive.google.com/drive/folders/1-qkSG5ohN9t6_ZctJQiq5BYoxD8VVfqL"
     },
     "timeline": [
         {

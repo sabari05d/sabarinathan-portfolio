@@ -93,8 +93,8 @@ function TimelineCard({ item, index }: { item: TimelineItem; index: number }) {
 
               <span
                 className={`inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full font-mono border ${item.status === 'Ongoing' || item.status === 'Active'
-                    ? 'text-[#00ff88] bg-[rgba(0,255,136,0.1)] border-[rgba(0,255,136,0.25)]'
-                    : 'text-[#8ba4b5] bg-[rgba(255,255,255,0.05)] border-[rgba(255,255,255,0.1)]'
+                  ? 'text-[#00ff88] bg-[rgba(0,255,136,0.1)] border-[rgba(0,255,136,0.25)]'
+                  : 'text-[#8ba4b5] bg-[rgba(255,255,255,0.05)] border-[rgba(255,255,255,0.1)]'
                   }`}
               >
                 {item.status === 'Ongoing' || item.status === 'Active' ? (
@@ -257,28 +257,50 @@ export default function AboutSection() {
                 </div>
                 <h3 className="font-semibold text-[#e8f4f8]">Education</h3>
               </div>
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {data.education.map((edu) => (
-                  <div key={edu.course} className="flex justify-between items-start">
-                    <div>
-                      <p className="text-sm font-medium text-[#e8f4f8]">{edu.course}</p>
-                      <p className="text-sm text-[#8ba4b5]">{edu.institution}</p>
-                      <p
-                        className="text-xs text-[#6a87a0]"
-                        style={{ fontFamily: "'JetBrains Mono', monospace" }}
-                      >
-                        {edu.time}
-                      </p>
+                  <div
+                    key={edu.course}
+                    className="p-3.5 rounded-lg bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.05)] hover:border-[rgba(0,229,255,0.2)] transition-all"
+                  >
+                    <div className="flex justify-between items-start gap-2">
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs font-mono font-semibold text-[#00e5ff]">
+                            [{edu.degree}]
+                          </span>
+                          <p className="text-sm font-medium text-[#e8f4f8]">{edu.course}</p>
+                        </div>
+                        <p className="text-sm text-[#8ba4b5] mt-0.5">{edu.institution}</p>
+                      </div>
+
+                      <div className="flex flex-col items-end gap-1">
+                        <span
+                          className={`text-[11px] px-2 py-0.5 rounded-full font-mono ${edu.status === 'Ongoing'
+                              ? 'bg-[rgba(0,255,136,0.1)] text-[#00ff88] border border-[rgba(0,255,136,0.2)]'
+                              : 'bg-[rgba(0,229,255,0.08)] text-[#00e5ff] border border-[rgba(0,229,255,0.15)]'
+                            }`}
+                        >
+                          {edu.status}
+                        </span>
+                        <span className="text-xs text-[#6a87a0] font-mono">{edu.time}</span>
+                      </div>
                     </div>
-                    <span
-                      className={`text-xs px-2 py-0.5 rounded-full ${edu.status === 'Ongoing'
-                          ? 'bg-[rgba(0,255,136,0.1)] text-[#00ff88] border border-[rgba(0,255,136,0.2)]'
-                          : 'bg-[rgba(0,229,255,0.08)] text-[#00e5ff] border border-[rgba(0,229,255,0.15)]'
-                        }`}
-                      style={{ fontFamily: "'JetBrains Mono', monospace" }}
-                    >
-                      {edu.status}
-                    </span>
+
+                    {/* Mode & Score Badge Bar */}
+                    <div className="flex items-center gap-3 mt-2 text-xs font-mono text-[#6a87a0]">
+                      {edu.mode && <span>Mode: {edu.mode}</span>}
+                      {edu.score && <span>• Score: {edu.score}</span>}
+                    </div>
+
+                    {/* Bullet Highlights for Context */}
+                    {edu.highlights && edu.highlights.length > 0 && (
+                      <ul className="mt-2.5 space-y-1 pl-4 list-disc text-xs text-[#8ba4b5]">
+                        {edu.highlights.map((item, idx) => (
+                          <li key={idx}>{item}</li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
                 ))}
               </div>
