@@ -64,8 +64,7 @@ export default function ContactSection() {
         >
           <div className="h-px w-16 bg-[rgba(0,229,255,0.3)]" />
           <span
-            className="text-xs text-[#00e5ff] tracking-widest uppercase"
-            style={{ fontFamily: "'JetBrains Mono', monospace" }}
+            className="text-xs text-[#00e5ff] tracking-widest uppercase font-mono"
           >
             05 / Contact
           </span>
@@ -119,7 +118,7 @@ export default function ContactSection() {
               <motion.a
                 key={c.label}
                 href={c.href}
-                target={c.href.startsWith('mailto') ? undefined : '_blank'}
+                target={c.href.startsWith('mailto') || c.href.startsWith('tel') ? undefined : '_blank'}
                 rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -133,7 +132,7 @@ export default function ContactSection() {
                   <Icon size={16} style={{ color: c.color }} />
                 </div>
                 <div className="min-w-0">
-                  <p className="text-xs text-[#6a87a0] mb-0.5" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+                  <p className="text-xs text-[#6a87a0] mb-0.5 font-mono">
                     {c.label}
                   </p>
                   <p className="text-sm text-[#e8f4f8] truncate font-medium group-hover:text-white transition-colors">

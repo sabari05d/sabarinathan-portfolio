@@ -11,19 +11,13 @@ export default function Footer() {
           <div className="w-7 h-7 rounded-lg bg-[rgba(0,229,255,0.08)] border border-[rgba(0,229,255,0.15)] flex items-center justify-center">
             <Terminal size={13} className="text-[#00e5ff]" />
           </div>
-          <span
-            className="text-sm text-[#6a87a0]"
-            style={{ fontFamily: "'JetBrains Mono', monospace" }}
-          >
+          <span className="text-sm text-[#6a87a0] font-mono">
             sabari<span className="text-[#00e5ff]">.</span>dev
           </span>
         </div>
 
-        <p
-          className="text-xs text-[#6a87a0] text-center"
-          style={{ fontFamily: "'JetBrains Mono', monospace" }}
-        >
-          © {new Date().getFullYear()} {data.name} · <span className="text-[#00e5ff]">//</span> building things that matter
+        <p className="text-xs text-[#6a87a0] text-center font-mono">
+          © {new Date().getFullYear()} {data.name} · <span className="text-[#00e5ff]">{'//'}</span> building things that matter
         </p>
       </div>
     </footer>

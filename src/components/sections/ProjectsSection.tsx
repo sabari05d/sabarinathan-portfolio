@@ -1,8 +1,8 @@
 'use client'
 
-import { useRef, useState, MouseEvent } from 'react'
+import { useRef, MouseEvent } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { ExternalLink, Github, Code2, Layers, CheckCircle2, AlertCircle, Clock, User, Briefcase } from 'lucide-react'
+import { ExternalLink, Github, Code2, Layers, CheckCircle2, AlertCircle, Clock, User, Briefcase, Lock } from 'lucide-react'
 import portfolioData from '@/data/portfolio.json'
 import type { Project, Portfolio } from '@/types/portfolio'
 
@@ -47,8 +47,7 @@ function StatusBadge({ status }: { status: string }) {
 
   return (
     <span
-      className={`inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-full font-medium border ${color}`}
-      style={{ fontFamily: "'JetBrains Mono', monospace" }}
+      className={`inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-full font-medium font-mono border ${color}`}
     >
       <Icon size={10} />
       {status}
@@ -58,15 +57,14 @@ function StatusBadge({ status }: { status: string }) {
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const cardRef = useRef<HTMLDivElement>(null)
-  const [mouse, setMouse] = useState({ x: 0, y: 0 })
 
   function handleMouseMove(e: MouseEvent<HTMLDivElement>) {
     if (!cardRef.current) return
     const rect = cardRef.current.getBoundingClientRect()
-    setMouse({
-      x: ((e.clientX - rect.left) / rect.width) * 100,
-      y: ((e.clientY - rect.top) / rect.height) * 100,
-    })
+    const x = ((e.clientX - rect.left) / rect.width) * 100
+    const y = ((e.clientY - rect.top) / rect.height) * 100
+    cardRef.current.style.setProperty('--mouse-x', `${x}%`)
+    cardRef.current.style.setProperty('--mouse-y', `${y}%`)
   }
 
   const inView = useInView(cardRef, { once: true, margin: '-60px' })
@@ -85,7 +83,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       <div
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
         style={{
-          background: `radial-gradient(400px circle at ${mouse.x}% ${mouse.y}%, rgba(0,229,255,0.07), transparent 50%)`,
+          background: `radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0,229,255,0.07), transparent 50%)`,
         }}
       />
 
@@ -104,8 +102,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           <div className="flex items-center gap-2">
             {/* Type badge */}
             <span
-              className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded bg-[rgba(255,255,255,0.05)] text-[#8ba4b5] border border-[rgba(255,255,255,0.1)] uppercase tracking-wider"
-              style={{ fontFamily: "'JetBrains Mono', monospace" }}
+              className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded bg-[rgba(255,255,255,0.05)] text-[#8ba4b5] border border-[rgba(255,255,255,0.1)] uppercase tracking-wider font-mono"
             >
               {project.type === 'Client' ? <Briefcase size={10} /> : <User size={10} />}
               {project.type}
@@ -119,8 +116,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           {/* Index & Industry Header */}
           <div className="flex items-center justify-between mb-2">
             <span
-              className="text-xs text-[rgba(0,229,255,0.6)] font-semibold"
-              style={{ fontFamily: "'JetBrains Mono', monospace" }}
+              className="text-xs text-[rgba(0,229,255,0.6)] font-semibold font-mono"
             >
               {String(index + 1).padStart(2, '0')}
             </span>
@@ -176,9 +172,8 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             {project.technologies.map((tech) => (
               <span
                 key={tech}
-                className="text-[11px] px-2 py-0.5 rounded-md font-medium"
+                className="text-[11px] px-2 py-0.5 rounded-md font-medium font-mono"
                 style={{
-                  fontFamily: "'JetBrains Mono', monospace",
                   backgroundColor: `${techColors[tech] || '#8ba4b5'}12`,
                   color: techColors[tech] || '#8ba4b5',
                   border: `1px solid ${techColors[tech] || '#8ba4b5'}25`,
@@ -192,30 +187,37 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       </div>
 
       {/* Links Footer */}
-      <div className="px-5 pb-5 pt-2 border-t border-[rgba(255,255,255,0.03)] flex items-center justify-end gap-4">
-        {project.code && (
-          <a
-            href={project.code}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-xs text-[#8ba4b5] hover:text-[#00e5ff] transition-colors"
-            style={{ fontFamily: "'JetBrains Mono', monospace" }}
-          >
-            <Github size={13} />
-            Source
-          </a>
-        )}
-        {project.link && (
-          <a
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-xs text-[#8ba4b5] hover:text-[#00e5ff] transition-colors"
-            style={{ fontFamily: "'JetBrains Mono', monospace" }}
-          >
-            <ExternalLink size={13} />
-            Live Demo
-          </a>
+      <div className="px-5 pb-5 pt-3 border-t border-[rgba(255,255,255,0.03)] flex items-center justify-between min-h-[46px]">
+        {!project.code && !project.link ? (
+          <span className="text-xs text-[#6a87a0] font-mono flex items-center gap-1.5 ml-auto">
+            <Lock size={12} className="text-[#8ba4b5]" />
+            Enterprise Project
+          </span>
+        ) : (
+          <div className="flex items-center gap-4 ml-auto">
+            {project.code && (
+              <a
+                href={project.code}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-xs text-[#8ba4b5] hover:text-[#00e5ff] transition-colors font-mono"
+              >
+                <Github size={13} />
+                Source
+              </a>
+            )}
+            {project.link && (
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-xs text-[#8ba4b5] hover:text-[#00e5ff] transition-colors font-mono"
+              >
+                <ExternalLink size={13} />
+                Live Demo
+              </a>
+            )}
+          </div>
         )}
       </div>
 
@@ -248,8 +250,7 @@ export default function ProjectsSection() {
           className="flex items-center gap-3 mb-4"
         >
           <span
-            className="text-xs text-[#00e5ff] tracking-widest uppercase"
-            style={{ fontFamily: "'JetBrains Mono', monospace" }}
+            className="text-xs text-[#00e5ff] tracking-widest uppercase font-mono"
           >
             02 / Projects
           </span>
@@ -263,7 +264,7 @@ export default function ProjectsSection() {
           className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-bold">
-            Things I've{' '}
+            Things I&apos;ve{' '}
             <span
               className="text-transparent bg-clip-text"
               style={{ backgroundImage: 'linear-gradient(135deg, #00e5ff, #00ff88)' }}
@@ -274,8 +275,7 @@ export default function ProjectsSection() {
           <div className="flex items-center gap-2">
             <Layers size={14} className="text-[#6a87a0]" />
             <span
-              className="text-sm text-[#6a87a0]"
-              style={{ fontFamily: "'JetBrains Mono', monospace" }}
+              className="text-sm text-[#6a87a0] font-mono"
             >
               {projects.length} Total Applications
             </span>
@@ -300,8 +300,7 @@ export default function ProjectsSection() {
             href={data.contact?.github || 'https://github.com/sabari05d'}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm text-[#8ba4b5] hover:text-[#00e5ff] transition-colors"
-            style={{ fontFamily: "'JetBrains Mono', monospace" }}
+            className="inline-flex items-center gap-2 text-sm text-[#8ba4b5] hover:text-[#00e5ff] transition-colors font-mono"
           >
             <Github size={16} />
             Explore all repositories on GitHub

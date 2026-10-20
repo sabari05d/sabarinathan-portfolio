@@ -69,10 +69,7 @@ export default function Navbar({ onCommandPalette }: NavbarProps) {
             <div className="w-8 h-8 rounded-lg bg-[rgba(0,229,255,0.1)] border border-[rgba(0,229,255,0.2)] flex items-center justify-center group-hover:bg-[rgba(0,229,255,0.15)] transition-colors">
               <Terminal size={15} className="text-[#00e5ff]" />
             </div>
-            <span
-              className="font-mono text-sm text-[#8ba4b5] group-hover:text-[#00e5ff] transition-colors"
-              style={{ fontFamily: "'JetBrains Mono', monospace" }}
-            >
+            <span className="font-mono text-sm text-[#8ba4b5] group-hover:text-[#00e5ff] transition-colors">
               sabari<span className="text-[#00e5ff]">.</span>dev
             </span>
           </a>
@@ -108,8 +105,7 @@ export default function Navbar({ onCommandPalette }: NavbarProps) {
           <div className="flex items-center gap-3">
             <button
               onClick={onCommandPalette}
-              className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[rgba(0,229,255,0.05)] border border-[rgba(0,229,255,0.12)] text-[#8ba4b5] hover:text-[#00e5ff] hover:border-[rgba(0,229,255,0.25)] transition-all text-xs"
-              style={{ fontFamily: "'JetBrains Mono', monospace" }}
+              className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[rgba(0,229,255,0.05)] border border-[rgba(0,229,255,0.12)] text-[#8ba4b5] hover:text-[#00e5ff] hover:border-[rgba(0,229,255,0.25)] transition-all text-xs font-mono"
             >
               <Command size={12} />
               <span>cmd+k</span>
@@ -155,11 +151,16 @@ export default function Navbar({ onCommandPalette }: NavbarProps) {
                   {link.label}
                 </a>
               ))}
-              <div className="pt-2 border-t border-[rgba(0,229,255,0.08)] mt-2">
+              <div className="pt-3 border-t border-[rgba(0,229,255,0.08)] mt-2 flex flex-col gap-2">
+                <a
+                  href={`mailto:${data.contact.email}`}
+                  className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[#00e5ff] text-[#020408] text-sm font-semibold hover:bg-[#00b8cc] transition-all"
+                >
+                  Hire Me
+                </a>
                 <button
                   onClick={() => { onCommandPalette(); setMobileOpen(false) }}
-                  className="w-full flex items-center gap-2 px-4 py-3 text-sm text-[#8ba4b5] hover:text-[#00e5ff]"
-                  style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                  className="w-full flex items-center gap-2 px-4 py-2.5 text-sm text-[#8ba4b5] hover:text-[#00e5ff] font-mono rounded-lg hover:bg-[rgba(0,229,255,0.05)]"
                 >
                   <Command size={14} />
                   Open Command Palette

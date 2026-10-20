@@ -203,7 +203,7 @@
                     "JavaScript",
                     "HTML",
                     "CSS",
-                    "Bootstrap & Tailwild"
+                    "Bootstrap & Tailwind CSS"
                 ]
             },
             {
@@ -252,7 +252,7 @@
             "JavaScript": 88,
             "HTML": 95,
             "CSS": 90,
-            "Bootstrap & Tailwild": 85,
+            "Bootstrap & Tailwind CSS": 85,
             "Java": 70,
             "Spring Boot": 78,
             "PHP": 90,
@@ -292,8 +292,14 @@
         {
             "company": "SalesQueen Software Solutions",
             "role": "Full Stack Developer",
-            "duration": "Jan 2025 - Present",
+            "duration": "Jan 2025 - May 2026",
             "description": "Engineered scalable web applications by bridging frontend responsiveness with robust backend architectures. Owned end-to-end feature development, optimized codebase performance, and integrated full-stack solutions to drive seamless user experiences."
+        },
+        {
+            "company": "Digient Technologies",
+            "role": "Software Engineer",
+            "duration": "Sep 2026 - Present",
+            "description": "Engineered scalable software solutions by combining modern frontend technologies with robust backend architectures. Developed and optimized applications, integrated APIs and databases, and leveraged AI-assisted tools to deliver high-performance, maintainable software."
         }
     ],
     "education": [
@@ -404,11 +410,11 @@
             "metrics": []
         },
         {
-            "period": "Jan 2025 - Present",
+            "period": "Jan 2025 - May 2026",
             "title": "Full Stack Developer",
             "organization": "Salesqueen Software Solutions",
             "category": "Experience",
-            "status": "Ongoing",
+            "status": "Completed",
             "description": "Architected and deployed an enterprise B2B Manufacturing & ERP Suite serving 15+ clients, engineered an automated biochemical recipe mix calculator, and built real-time WebSocket P&L analytics dashboards.",
             "tags": [
                 "React.js",
@@ -436,6 +442,23 @@
                     "value": "60%"
                 }
             ]
+        },
+        {
+            "period": "Sep 2026 - Present",
+            "title": "Software Engineer",
+            "organization": "Digient Technologies",
+            "category": "Experience",
+            "status": "Ongoing",
+            "description": "Engineered scalable software solutions by combining modern frontend technologies with robust backend architectures. Developed and optimized applications, integrated APIs and databases, and leveraged AI-assisted tools to deliver high-performance, maintainable software.",
+            "tags": [
+                "React.js",
+                "Next.js",
+                "TypeScript",
+                "REST APIs",
+                "Databases",
+                "AI Tools"
+            ],
+            "metrics": []
         },
         {
             "period": "Jul 2025 - Jul 2028",

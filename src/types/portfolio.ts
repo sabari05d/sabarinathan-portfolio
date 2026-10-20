@@ -37,6 +37,9 @@ export interface Education {
   status: 'Completed' | 'Ongoing' | string
   time: string
   institution: string
+  mode?: string
+  score?: string
+  highlights?: string[]
 }
 
 export interface Contact {
@@ -45,6 +48,7 @@ export interface Contact {
   github: string
   mobile: string
   portfolio?: string
+  resume?: string
 }
 
 export interface Metric {

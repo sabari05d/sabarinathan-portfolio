@@ -13,6 +13,7 @@ import {
   CheckCircle2,
   Clock,
   Sparkles,
+  Calendar,
 } from 'lucide-react'
 import data from '@/data/portfolio.json'
 import type { TimelineItem, Portfolio } from '@/types/portfolio'
@@ -75,17 +76,13 @@ function TimelineCard({ item, index }: { item: TimelineItem; index: number }) {
         <div className="p-6 rounded-2xl bg-[rgba(10,21,32,0.7)] border border-[rgba(0,229,255,0.08)] backdrop-blur-md shadow-xl hover:border-[rgba(0,229,255,0.2)] transition-all group">
           {/* Top metadata */}
           <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-            <span
-              className="text-xs text-[#00e5ff] font-semibold"
-              style={{ fontFamily: "'JetBrains Mono', monospace" }}
-            >
+            <span className="text-xs text-[#00e5ff] font-semibold font-mono">
               {item.period}
             </span>
 
             <div className="flex items-center gap-2">
               <span
-                className={`inline-flex items-center gap-1 text-[10px] px-2.5 py-0.5 rounded-full font-medium border ${catColor}`}
-                style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                className={`inline-flex items-center gap-1 text-[10px] px-2.5 py-0.5 rounded-full font-medium font-mono border ${catColor}`}
               >
                 <CatIcon size={10} />
                 {item.category}
@@ -174,8 +171,7 @@ export default function AboutSection() {
           className="flex items-center gap-3 mb-4"
         >
           <span
-            className="text-xs text-[#00e5ff] tracking-widest uppercase"
-            style={{ fontFamily: "'JetBrains Mono', monospace" }}
+            className="text-xs text-[#00e5ff] tracking-widest uppercase font-mono"
           >
             01 / About
           </span>
@@ -183,7 +179,7 @@ export default function AboutSection() {
         </motion.div>
 
         {/* Existing Grid Section */}
-        <div className="grid lg:grid-cols-2 gap-16 items-center mb-32">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start mb-24 sm:mb-32">
           {/* Left: Text content */}
           <div>
             <motion.h2
@@ -249,57 +245,90 @@ export default function AboutSection() {
               initial="hidden"
               animate={inView ? 'visible' : 'hidden'}
               variants={fadeUp}
-              className="p-6 rounded-2xl bg-[rgba(10,21,32,0.6)] border border-[rgba(0,229,255,0.08)] backdrop-blur-sm"
+              className="p-5 sm:p-6 rounded-2xl bg-[rgba(10,21,32,0.6)] border border-[rgba(0,229,255,0.08)] backdrop-blur-sm"
             >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-8 h-8 rounded-lg bg-[rgba(0,229,255,0.1)] flex items-center justify-center">
-                  <Target size={15} className="text-[#00e5ff]" />
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-8 h-8 rounded-lg bg-[rgba(0,229,255,0.1)] border border-[rgba(0,229,255,0.2)] flex items-center justify-center flex-shrink-0">
+                  <GraduationCap size={16} className="text-[#00e5ff]" />
                 </div>
-                <h3 className="font-semibold text-[#e8f4f8]">Education</h3>
+                <div>
+                  <h3 className="font-semibold text-[#e8f4f8] text-base leading-tight">Education</h3>
+                  <p className="text-[11px] text-[#6a87a0] font-mono mt-0.5">Academic Qualifications</p>
+                </div>
               </div>
+
               <div className="space-y-4">
                 {data.education.map((edu) => (
                   <div
                     key={edu.course}
-                    className="p-3.5 rounded-lg bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.05)] hover:border-[rgba(0,229,255,0.2)] transition-all"
+                    className="p-4 rounded-xl bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.06)] hover:border-[rgba(0,229,255,0.2)] transition-all duration-300"
                   >
-                    <div className="flex justify-between items-start gap-2">
-                      <div>
-                        <div className="flex items-center gap-2">
-                          <span className="text-xs font-mono font-semibold text-[#00e5ff]">
-                            [{edu.degree}]
-                          </span>
-                          <p className="text-sm font-medium text-[#e8f4f8]">{edu.course}</p>
-                        </div>
-                        <p className="text-sm text-[#8ba4b5] mt-0.5">{edu.institution}</p>
-                      </div>
-
-                      <div className="flex flex-col items-end gap-1">
-                        <span
-                          className={`text-[11px] px-2 py-0.5 rounded-full font-mono ${edu.status === 'Ongoing'
-                              ? 'bg-[rgba(0,255,136,0.1)] text-[#00ff88] border border-[rgba(0,255,136,0.2)]'
-                              : 'bg-[rgba(0,229,255,0.08)] text-[#00e5ff] border border-[rgba(0,229,255,0.15)]'
-                            }`}
-                        >
-                          {edu.status}
+                    {/* Top Meta: Degree Tag, Time & Status */}
+                    <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="px-2.5 py-0.5 rounded-md bg-[rgba(0,229,255,0.1)] text-[#00e5ff] font-mono text-xs font-semibold border border-[rgba(0,229,255,0.25)]">
+                          {edu.degree}
                         </span>
-                        <span className="text-xs text-[#6a87a0] font-mono">{edu.time}</span>
+                        <span className="text-xs text-[#6a87a0] font-mono flex items-center gap-1">
+                          <Calendar size={11} className="text-[#00e5ff]/60" />
+                          {edu.time}
+                        </span>
                       </div>
+
+                      <span
+                        className={`inline-flex items-center gap-1.5 text-[11px] px-2.5 py-0.5 rounded-full font-mono border ${
+                          edu.status === 'Ongoing'
+                            ? 'bg-[rgba(0,255,136,0.1)] text-[#00ff88] border-[rgba(0,255,136,0.25)]'
+                            : 'bg-[rgba(255,255,255,0.05)] text-[#8ba4b5] border-[rgba(255,255,255,0.1)]'
+                        }`}
+                      >
+                        {edu.status === 'Ongoing' ? (
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#00ff88] animate-pulse" />
+                        ) : (
+                          <CheckCircle2 size={11} className="text-[#00e5ff]" />
+                        )}
+                        {edu.status}
+                      </span>
                     </div>
 
-                    {/* Mode & Score Badge Bar */}
-                    <div className="flex items-center gap-3 mt-2 text-xs font-mono text-[#6a87a0]">
-                      {edu.mode && <span>Mode: {edu.mode}</span>}
-                      {edu.score && <span>• Score: {edu.score}</span>}
-                    </div>
+                    {/* Course Title - Full width to breathe without wrapping constraints */}
+                    <h4 className="text-base font-bold text-[#e8f4f8] leading-snug">
+                      {edu.course}
+                    </h4>
 
-                    {/* Bullet Highlights for Context */}
+                    {/* Institution */}
+                    <p className="text-xs text-[#8ba4b5] mt-1 font-medium flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#00e5ff]/50 flex-shrink-0" />
+                      <span>{edu.institution}</span>
+                    </p>
+
+                    {/* Mode & Score Badges */}
+                    {(edu.mode || edu.score) && (
+                      <div className="flex flex-wrap items-center gap-2 mt-3 pt-2.5 border-t border-[rgba(255,255,255,0.04)]">
+                        {edu.score && (
+                          <span className="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded bg-[rgba(255,183,0,0.08)] border border-[rgba(255,183,0,0.2)] text-[#ffb700] font-mono">
+                            <Award size={11} />
+                            Score: {edu.score}
+                          </span>
+                        )}
+                        {edu.mode && (
+                          <span className="text-[11px] px-2 py-0.5 rounded bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.07)] text-[#6a87a0] font-mono">
+                            {edu.mode}
+                          </span>
+                        )}
+                      </div>
+                    )}
+
+                    {/* Bullet Highlights */}
                     {edu.highlights && edu.highlights.length > 0 && (
-                      <ul className="mt-2.5 space-y-1 pl-4 list-disc text-xs text-[#8ba4b5]">
+                      <div className="mt-2.5 space-y-1.5">
                         {edu.highlights.map((item, idx) => (
-                          <li key={idx}>{item}</li>
+                          <div key={idx} className="flex items-start gap-2 text-xs text-[#8ba4b5] leading-relaxed">
+                            <span className="text-[#00e5ff] text-[11px] mt-0.5 flex-shrink-0 font-mono">›</span>
+                            <span>{item}</span>
+                          </div>
                         ))}
-                      </ul>
+                      </div>
                     )}
                   </div>
                 ))}
