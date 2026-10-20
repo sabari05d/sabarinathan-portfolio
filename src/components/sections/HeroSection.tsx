@@ -9,7 +9,7 @@ const ROLES = data.landing.roles
 
 function TypewriterRole() {
   const [roleIndex, setRoleIndex] = useState(0)
-  const [displayed, setDisplayed] = useState('')
+  const [displayed, setDisplayed] = useState(ROLES[0])
   const [deleting, setDeleting] = useState(false)
   const [paused, setPaused] = useState(false)
   const reduce = useReducedMotion()
@@ -49,7 +49,7 @@ function TypewriterRole() {
   }, [displayed, deleting, roleIndex, paused, reduce])
 
   return (
-    <span className="text-[#00e5ff]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+    <span className="text-[#00e5ff] font-mono">
       {displayed}
       <span className="animate-[blink_1.2s_step-end_infinite]">▋</span>
     </span>
@@ -125,17 +125,16 @@ export default function HeroSection() {
         >
           <div className="flex items-center gap-2.5">
             <span className="w-2 h-2 rounded-full bg-[#00ff88] status-dot inline-block" />
-            <span
-              className="text-[#00ff88] font-medium"
-              style={{ fontFamily: "'JetBrains Mono', monospace" }}
-            >
+            <span className="text-[#00ff88] font-medium font-mono">
               Available for opportunities
             </span>
           </div>
 
           <span className="hidden md:block text-[#6a87a0]">·</span>
 
-          <span className="text-[#8ba4b5] text-xs">Building at SalesQueen</span>
+          <span className="text-[#8ba4b5] text-xs">
+            Building at {data.experience[data.experience.length - 1]?.company || 'Digient Technologies'}
+          </span>
         </motion.div>
 
         {/* Name */}
@@ -155,8 +154,7 @@ export default function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="text-lg md:text-xl mb-6 h-8 flex items-center justify-center gap-2 text-[#8ba4b5]"
-          style={{ fontFamily: "'JetBrains Mono', monospace" }}
+          className="text-lg md:text-xl mb-6 h-8 flex items-center justify-center gap-2 text-[#8ba4b5] font-mono"
         >
           <span className="text-[rgba(0,229,255,0.4)]">~$</span>
           <TypewriterRole />
@@ -182,8 +180,7 @@ export default function HeroSection() {
           {data.landing.highlights.map((h) => (
             <span
               key={h}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[rgba(0,229,255,0.05)] border border-[rgba(0,229,255,0.12)] text-xs text-[#8ba4b5]"
-              style={{ fontFamily: "'JetBrains Mono', monospace" }}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[rgba(0,229,255,0.05)] border border-[rgba(0,229,255,0.12)] text-xs text-[#8ba4b5] font-mono"
             >
               <Zap size={10} className="text-[#00e5ff]" />
               {h}
@@ -250,8 +247,7 @@ export default function HeroSection() {
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
         <span
-          className="text-xs text-[#6a87a0] tracking-widest uppercase"
-          style={{ fontFamily: "'JetBrains Mono', monospace" }}
+          className="text-xs text-[#6a87a0] tracking-widest uppercase font-mono"
         >
           scroll
         </span>

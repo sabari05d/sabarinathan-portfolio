@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Search, ArrowRight, Hash, User, Briefcase, Code2, Mail, Github, Linkedin, X, type LucideIcon } from 'lucide-react'
 import portfolioData from '@/data/portfolio.json'
@@ -25,7 +25,7 @@ interface Command {
 const data = portfolioData as Portfolio
 
 const navCommands: Command[] = [
-  { id: 'hero', label: 'Go to Hero', icon: Hash, section: 'Navigate', href: '#', shortcut: 'H' },
+  { id: 'hero', label: 'Go to Hero', icon: Hash, section: 'Navigate', href: '#hero', shortcut: 'H' },
   { id: 'about', label: 'About Me', icon: User, section: 'Navigate', href: '#about', shortcut: 'A' },
   { id: 'projects', label: 'View Projects', icon: Code2, section: 'Navigate', href: '#projects', shortcut: 'P' },
   { id: 'skills', label: 'Tech Stack', icon: Hash, section: 'Navigate', href: '#skills', shortcut: 'S' },
@@ -83,6 +83,18 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
     setSelectedIndex(0)
   }, [isOpen, filtered.length])
 
+  const executeCommand = useCallback((cmd: Command) => {
+    onClose()
+    if (cmd.external && cmd.href) {
+      window.open(cmd.href, '_blank', 'noopener,noreferrer')
+    } else if (cmd.href === '#' || cmd.href === '#hero') {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } else if (cmd.href) {
+      const el = document.querySelector(cmd.href)
+      el?.scrollIntoView({ behavior: 'smooth' })
+    }
+  }, [onClose])
+
   useEffect(() => {
     if (!isOpen) return
 
@@ -114,17 +126,7 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
     }
     window.addEventListener('keydown', handler)
     return () => window.removeEventListener('keydown', handler)
-  }, [isOpen, filtered, selectedIndex, onClose])
-
-  function executeCommand(cmd: Command) {
-    onClose()
-    if (cmd.external && cmd.href) {
-      window.open(cmd.href, '_blank', 'noopener,noreferrer')
-    } else if (cmd.href) {
-      const el = document.querySelector(cmd.href)
-      el?.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
+  }, [isOpen, filtered, selectedIndex, onClose, executeCommand])
 
   const sections = [...new Set(filtered.map(c => c.section))]
 
@@ -148,11 +150,11 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
             role="dialog"
             aria-modal="true"
             aria-labelledby={titleId}
-            initial={{ opacity: 0, scale: 0.96, y: -8 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.96, y: -8 }}
+            initial={{ opacity: 0, scale: 0.96, y: -8, x: '-50%' }}
+            animate={{ opacity: 1, scale: 1, y: 0, x: '-50%' }}
+            exit={{ opacity: 0, scale: 0.96, y: -8, x: '-50%' }}
             transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed top-[15vh] md:left-1/2 -translate-x-1/2 z-[101] w-[90%] max-w-[580px] mx-4"
+            className="fixed top-[15vh] left-1/2 z-[101] w-[calc(100%-2rem)] max-w-[580px]"
           >
             <div className="rounded-2xl bg-[rgba(6,13,20,0.98)] border border-[rgba(0,229,255,0.15)] shadow-[0_25px_80px_rgba(0,0,0,0.7),0_0_0_1px_rgba(0,229,255,0.08)] overflow-hidden">
               {/* Search header */}
@@ -166,8 +168,7 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
                   onChange={e => setQuery(e.target.value)}
                   placeholder="Search commands, projects, links..."
                   aria-label="Search commands"
-                  className="flex-1 bg-transparent text-[#e8f4f8] placeholder:text-[#6a87a0] text-sm"
-                  style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                  className="flex-1 bg-transparent text-[#e8f4f8] placeholder:text-[#6a87a0] text-sm font-mono"
                 />
                 <button
                   onClick={onClose}
@@ -191,8 +192,7 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
                     return (
                       <div key={section}>
                         <div
-                          className="px-4 py-1.5 text-xs font-semibold text-[#6a87a0] uppercase tracking-widest"
-                          style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                          className="px-4 py-1.5 text-xs font-semibold text-[#6a87a0] uppercase tracking-widest font-mono"
                         >
                           {section}
                         </div>
@@ -220,14 +220,13 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
                               />
                               <span className="flex-1 text-left">{cmd.label}</span>
                               {cmd.tech && (
-                                <span className="text-xs text-[#6a87a0]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+                                <span className="text-xs text-[#6a87a0] font-mono">
                                   {cmd.tech.slice(0, 2).join(' · ')}
                                 </span>
                               )}
                               {cmd.shortcut && !query && (
                                 <span
-                                  className="text-xs px-1.5 py-0.5 rounded border border-[rgba(0,229,255,0.15)] text-[#6a87a0]"
-                                  style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                                  className="text-xs px-1.5 py-0.5 rounded border border-[rgba(0,229,255,0.15)] text-[#6a87a0] font-mono"
                                 >
                                   {cmd.shortcut}
                                 </span>
@@ -243,8 +242,7 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
               </div>
 
               {/* Footer */}
-              <div className="px-4 py-2.5 border-t border-[rgba(0,229,255,0.06)] flex items-center gap-4 text-xs text-[#6a87a0]"
-                   style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+              <div className="px-4 py-2.5 border-t border-[rgba(0,229,255,0.06)] flex items-center gap-4 text-xs text-[#6a87a0] font-mono">
                 <span>↑↓ navigate</span>
                 <span>↵ select</span>
                 <span>esc close</span>

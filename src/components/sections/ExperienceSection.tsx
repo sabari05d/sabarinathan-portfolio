@@ -11,7 +11,8 @@ const data = portfolioData as Portfolio
 const roleColors = {
   'Frontend Developer Intern': '#00e5ff',
   'Backend Developer Intern': '#ffb700',
-  'Full Stack Developer': '#00ff88',
+  'Full Stack Developer': '#38bdf8',
+  'Software Engineer': '#00ff88',
 } as Record<string, string>
 
 export default function ExperienceSection() {
@@ -32,8 +33,7 @@ export default function ExperienceSection() {
           className="flex items-center gap-3 mb-4"
         >
           <span
-            className="text-xs text-[#00e5ff] tracking-widest uppercase"
-            style={{ fontFamily: "'JetBrains Mono', monospace" }}
+            className="text-xs text-[#00e5ff] tracking-widest uppercase font-mono"
           >
             04 / Experience
           </span>
@@ -101,20 +101,18 @@ export default function ExperienceSection() {
                       <div>
                         <div className="flex items-center gap-2 mb-1">
                           <span
-                            className="text-xs px-2.5 py-0.5 rounded-full font-medium"
+                            className="text-xs px-2.5 py-0.5 rounded-full font-medium font-mono"
                             style={{
                               color,
                               backgroundColor: `${color}12`,
                               border: `1px solid ${color}30`,
-                              fontFamily: "'JetBrains Mono', monospace",
                             }}
                           >
                             {exp.role}
                           </span>
                           {isLatest && (
                             <span
-                              className="text-xs px-2 py-0.5 rounded-full bg-[rgba(0,255,136,0.1)] text-[#00ff88] border border-[rgba(0,255,136,0.2)]"
-                              style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                              className="text-xs px-2 py-0.5 rounded-full bg-[rgba(0,255,136,0.1)] text-[#00ff88] border border-[rgba(0,255,136,0.2)] font-mono"
                             >
                               Current
                             </span>
@@ -125,8 +123,7 @@ export default function ExperienceSection() {
                           <span className="text-sm font-semibold text-[#e8f4f8]">{exp.company}</span>
                         </div>
                       </div>
-                      <div className="flex items-center gap-1.5 text-xs text-[#6a87a0]"
-                           style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+                      <div className="flex items-center gap-1.5 text-xs text-[#6a87a0] font-mono">
                         <Calendar size={12} />
                         {exp.duration}
                       </div>

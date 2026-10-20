@@ -163,7 +163,7 @@ body {
   background: linear-gradient(90deg, transparent, rgba(0,229,255,0.05), transparent);
   animation: scan-line 8s linear infinite;
   pointer-events: none;
-  z-index: 1000;
+  z-index: 30;
 }
 
 /* Command palette overlay */

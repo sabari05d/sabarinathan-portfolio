@@ -16,15 +16,12 @@ function SkillBadge({ skill, color }: { skill: string; color: string }) {
   return (
     <div className="group relative">
       <div className="flex items-center justify-between mb-1.5">
-        <span
-          className="text-xs font-medium text-[#e8f4f8] truncate pr-2"
-          style={{ fontFamily: "'JetBrains Mono', monospace" }}
-        >
+        <span className="text-xs font-medium text-[#e8f4f8] truncate pr-2 font-mono">
           {skill}
         </span>
         <span
-          className="text-xs opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0"
-          style={{ color, fontFamily: "'JetBrains Mono', monospace" }}
+          className="text-xs opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 font-mono"
+          style={{ color }}
         >
           {pct}%
         </span>
@@ -68,8 +65,8 @@ function BentoCard({ group, delay }: { group: SkillGroup; delay: number }) {
           <div className="min-w-0">
             <h3 className="font-bold text-[#e8f4f8] text-sm sm:text-base truncate">{group.label}</h3>
             <span
-              className="text-xs block"
-              style={{ color: group.color, fontFamily: "'JetBrains Mono', monospace" }}
+              className="text-xs block font-mono"
+              style={{ color: group.color }}
             >
               {group.skills.length} techs
             </span>
@@ -99,7 +96,6 @@ function SkillCloud({ allSkills }: { allSkills: string[] }) {
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: 0.3 }}
       className="p-5 sm:p-6 rounded-2xl bg-[rgba(6,13,20,0.8)] border border-[rgba(0,229,255,0.08)] font-mono"
-      style={{ fontFamily: "'JetBrains Mono', monospace" }}
     >
       <div className="flex items-center gap-2 mb-4">
         <div className="w-2.5 h-2.5 rounded-full bg-[rgba(255,71,87,0.6)]" />
@@ -122,7 +118,7 @@ function SkillCloud({ allSkills }: { allSkills: string[] }) {
           ))}
         </div>
         <div className="mt-4 text-[#6a87a0]">
-          $ <span className="text-[#00ff88]">// {allSkills.length} technologies and counting...</span>
+          $ <span className="text-[#00ff88]">{'//'} {allSkills.length} technologies and counting...</span>
         </div>
         <div className="mt-1 flex items-center gap-1">
           <span className="text-[#6a87a0]">$</span>
@@ -153,8 +149,7 @@ export default function SkillsSection() {
           className="flex items-center gap-3 mb-4"
         >
           <span
-            className="text-xs text-[#00e5ff] tracking-widest uppercase"
-            style={{ fontFamily: "'JetBrains Mono', monospace" }}
+            className="text-xs text-[#00e5ff] tracking-widest uppercase font-mono"
           >
             03 / Tech Stack
           </span>
