@@ -24,7 +24,7 @@ const fadeUp = {
   visible: (i = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] as const },
   }),
 }
 
@@ -225,10 +225,10 @@ export default function AboutSection() {
               className="grid grid-cols-2 gap-3"
             >
               {[
-                'Building Scalable Web Apps',
+                'Building Reliable Web Apps',
                 'Exploring New Technologies',
                 'Learning & Sharing Knowledge',
-                'Fitness & Personal Growth',
+                'Cricket & Personal Growth',
               ].map((m) => (
                 <div
                   key={m}
@@ -263,10 +263,10 @@ export default function AboutSection() {
                     key={edu.course}
                     className="p-3.5 rounded-lg bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.05)] hover:border-[rgba(0,229,255,0.2)] transition-all"
                   >
-                    <div className="flex justify-between items-start gap-2">
-                      <div>
-                        <div className="flex items-center gap-2">
-                          <span className="text-xs font-mono font-semibold text-[#00e5ff]">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
+                      <div className="min-w-0">
+                        <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+                          <span className="text-xs font-mono font-semibold text-[#00e5ff] shrink-0">
                             [{edu.degree}]
                           </span>
                           <p className="text-sm font-medium text-[#e8f4f8]">{edu.course}</p>
@@ -274,23 +274,23 @@ export default function AboutSection() {
                         <p className="text-sm text-[#8ba4b5] mt-0.5">{edu.institution}</p>
                       </div>
 
-                      <div className="flex flex-col items-end gap-1">
+                      <div className="flex sm:flex-col items-center sm:items-end justify-between sm:justify-start gap-2 sm:gap-1 shrink-0">
                         <span
-                          className={`text-[11px] px-2 py-0.5 rounded-full font-mono ${edu.status === 'Ongoing'
+                          className={`text-[11px] px-2 py-0.5 rounded-full font-mono whitespace-nowrap ${edu.status === 'Ongoing'
                               ? 'bg-[rgba(0,255,136,0.1)] text-[#00ff88] border border-[rgba(0,255,136,0.2)]'
                               : 'bg-[rgba(0,229,255,0.08)] text-[#00e5ff] border border-[rgba(0,229,255,0.15)]'
                             }`}
                         >
                           {edu.status}
                         </span>
-                        <span className="text-xs text-[#6a87a0] font-mono">{edu.time}</span>
+                        <span className="text-xs text-[#6a87a0] font-mono whitespace-nowrap">{edu.time}</span>
                       </div>
                     </div>
 
                     {/* Mode & Score Badge Bar */}
-                    <div className="flex items-center gap-3 mt-2 text-xs font-mono text-[#6a87a0]">
-                      {edu.mode && <span>Mode: {edu.mode}</span>}
-                      {edu.score && <span>• Score: {edu.score}</span>}
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-2 text-xs font-mono text-[#6a87a0]">
+                      {edu.mode && <span className="whitespace-nowrap">Mode: {edu.mode}</span>}
+                      {edu.score && <span className="whitespace-nowrap">• Score: {edu.score}</span>}
                     </div>
 
                     {/* Bullet Highlights for Context */}
@@ -345,12 +345,12 @@ export default function AboutSection() {
                 <h3 className="font-semibold text-[#e8f4f8]">Interests</h3>
               </div>
               <div className="flex flex-wrap gap-2">
-                {data.interests.map((interest) => (
+                {typedData.skills.interests.map((interest) => (
                   <span
-                    key={interest}
+                    key={interest.title}
                     className="px-3 py-1.5 rounded-full text-sm bg-[rgba(0,255,136,0.06)] border border-[rgba(0,255,136,0.15)] text-[#8ba4b5]"
                   >
-                    {interest}
+                    {interest.title}
                   </span>
                 ))}
               </div>

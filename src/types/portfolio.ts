@@ -2,6 +2,8 @@ export type ProjectStatus = 'Live' | 'In Development' | 'Completed'
 
 export type ProjectType = 'Client' | 'Personal'
 
+export type KnowledgeLevel = 'Hands-on' | 'Working knowledge' | 'Foundational'
+
 export interface Project {
   title: string
   industry: string
@@ -16,27 +18,61 @@ export interface Project {
   link?: string
 }
 
-export interface SkillGroup {
+export interface TechnicalSkill {
+  name: string
+  level?: KnowledgeLevel
+  evidence?: string
+}
+
+export interface SkillCategory {
+  id: string
   label: string
+  description: string
   color: string
   icon: string
-  span?: string
-  skills: string[]
+  skills: TechnicalSkill[]
+}
+
+export interface EngineeringCapability {
+  title: string
+  description: string
+  icon: string
+  relatedProject?: string
+}
+
+export interface PersonalItem {
+  title: string
+  description: string
+  icon: string
+}
+
+export interface Skills {
+  categories: SkillCategory[]
+  capabilities: EngineeringCapability[]
+  strengths: PersonalItem[]
+  interests: PersonalItem[]
 }
 
 export interface Experience {
   company: string
   role: string
   duration: string
-  description: string
+  description?: string
+  highlights?: string[]
+  location?: string
+  employmentType?: string
+  current?: boolean
 }
 
 export interface Education {
   degree: string
   course: string
+  mode?: string
   status: 'Completed' | 'Ongoing' | string
   time: string
   institution: string
+  score?: string
+  highlights?: string[]
 }
 
 export interface Contact {
@@ -44,6 +80,7 @@ export interface Contact {
   linkedin: string
   github: string
   mobile: string
+  resume?: string
   portfolio?: string
 }
 
@@ -91,14 +128,10 @@ export interface Portfolio {
   subsummary: string
   landing: Landing
   projects: Project[]
-  skills: {
-    groups: SkillGroup[]
-    proficiencies: Record<string, number>
-  }
+  skills: Skills
   experience: Experience[]
   education: Education[]
   achievements: string[]
-  interests: string[]
   contact: Contact
   timeline: TimelineItem[]
 }

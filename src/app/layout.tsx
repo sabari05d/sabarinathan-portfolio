@@ -34,19 +34,19 @@ const jsonLd = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Sabarinathan D — Full Stack Developer',
+    default: 'Sabarinathan D — Software Engineer',
     template: '%s | Sabarinathan D',
   },
-  description: 'Full Stack Developer focused on building scalable, high-performance web applications using Java, Spring Boot, React, and PHP.',
-  keywords: ['Full Stack Developer', 'React', 'Spring Boot', 'Java', 'PHP', 'Portfolio'],
+  description: 'Software Engineer focused on building reliable web applications with React, Next.js, and PHP.',
+  keywords: ['Software Engineer', 'React', 'Next.js', 'PHP', 'Laravel', 'Portfolio'],
   authors: [{ name: 'Sabarinathan D' }],
   creator: 'Sabarinathan D',
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'Sabarinathan D — Full Stack Developer',
-    description: 'Building scalable web applications with clean architecture.',
+    title: 'Sabarinathan D — Software Engineer',
+    description: 'Building reliable web applications with React, Next.js, and PHP.',
     type: 'website',
     url: siteUrl,
     siteName: 'Sabarinathan D Portfolio',
@@ -56,14 +56,14 @@ export const metadata: Metadata = {
         url: '/logo.png',
         width: 512,
         height: 512,
-        alt: 'Sabarinathan D — Full Stack Developer',
+        alt: 'Sabarinathan D — Software Engineer',
       },
     ],
   },
   twitter: {
     card: 'summary',
-    title: 'Sabarinathan D — Full Stack Developer',
-    description: 'Building scalable web applications with clean architecture.',
+    title: 'Sabarinathan D — Software Engineer',
+    description: 'Building reliable web applications with React, Next.js, and PHP.',
     images: ['/logo.png'],
   },
   robots: {

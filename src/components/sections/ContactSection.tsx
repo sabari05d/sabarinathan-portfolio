@@ -2,7 +2,8 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Mail, Github, Linkedin, Globe, Send, ArrowRight, Phone, FileText } from 'lucide-react'
+import { Mail, Send, ArrowRight, Phone, FileText } from 'lucide-react'
+import { GitHubIcon, LinkedInIcon } from '@/components/icons/BrandIcons'
 import data from '@/data/portfolio.json'
 
 export default function ContactSection() {
@@ -21,14 +22,14 @@ export default function ContactSection() {
       color: '#00e5ff',
     },
     {
-      icon: Github,
+      icon: GitHubIcon,
       label: 'GitHub',
       value: 'sabari05d',
       href: data.contact.github,
       color: '#8ba4b5',
     },
     {
-      icon: Linkedin,
+      icon: LinkedInIcon,
       label: 'LinkedIn',
       value: 'sabarinathan-d',
       href: data.contact.linkedin,
@@ -119,8 +120,9 @@ export default function ContactSection() {
               <motion.a
                 key={c.label}
                 href={c.href}
-                target={c.href.startsWith('mailto') ? undefined : '_blank'}
-                rel="noopener noreferrer"
+                target={c.href.startsWith('http') ? '_blank' : undefined}
+                rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                aria-label={`${c.label}: ${c.value}`}
                 initial={{ opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.3 + i * 0.08 }}

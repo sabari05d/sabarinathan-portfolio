@@ -2,7 +2,8 @@
 
 import { useEffect, useState, useRef } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
-import { Github, Linkedin, Mail, ArrowDown, Zap, ChevronRight, FileText } from 'lucide-react'
+import { Mail, ArrowDown, Zap, ChevronRight, FileText } from 'lucide-react'
+import { GitHubIcon, LinkedInIcon } from '@/components/icons/BrandIcons'
 import data from '@/data/portfolio.json'
 
 const ROLES = data.landing.roles
@@ -135,7 +136,7 @@ export default function HeroSection() {
 
           <span className="hidden md:block text-[#6a87a0]">·</span>
 
-          <span className="text-[#8ba4b5] text-xs">Building at SalesQueen</span>
+          <span className="text-[#8ba4b5] text-xs">Software Engineer at Digient</span>
         </motion.div>
 
         {/* Name */}
@@ -222,16 +223,16 @@ export default function HeroSection() {
           className="flex items-center justify-center gap-5"
         >
           {[
-            { href: data.contact.github, Icon: Github, label: 'GitHub' },
-            { href: data.contact.linkedin, Icon: Linkedin, label: 'LinkedIn' },
+            { href: data.contact.github, Icon: GitHubIcon, label: 'GitHub' },
+            { href: data.contact.linkedin, Icon: LinkedInIcon, label: 'LinkedIn' },
             { href: `mailto:${data.contact.email}`, Icon: Mail, label: 'Email' },
             { href: data.contact.resume, Icon: FileText, label: 'Resume' },
           ].map(({ href, Icon, label }) => (
             <a
               key={label}
               href={href}
-              target="_blank"
-              rel="noopener noreferrer"
+              target={href.startsWith('http') ? '_blank' : undefined}
+              rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
               className="group flex items-center gap-2 text-[#6a87a0] hover:text-[#00e5ff] transition-colors text-sm"
               aria-label={label}
             >

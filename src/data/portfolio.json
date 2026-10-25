@@ -1,23 +1,23 @@
 {
     "name": "Sabarinathan D",
-    "title": "Full Stack Developer",
-    "summary": "Full Stack Developer focused on building scalable, high-performance web applications using React, Next.js, and PHP (Laravel/CodeIgniter), Python (FastAPI/Django), Java, Spring Boot. Passionate about clean architecture, performance optimization, and creating seamless user experiences. Strong believer in systems thinking and continuous learning.",
-    "subsummary": "I specialize in developing secure and scalable applications, from e-commerce platforms to data-driven web solutions. My recent work includes backend security enhancements, real-time applications, and cloud integrations.",
+    "title": "Software Engineer",
+    "summary": "Software Engineer focused on building reliable web applications with React, Next.js, and PHP. I work across frontend, backend, APIs, and databases — with a practical approach to debugging, integration, and maintainable code.",
+    "subsummary": "My work includes client-facing Next.js sites, a B2B marketplace delivered to web and Android, and API-backed research tools. I care about shipping software that is clear to maintain and usable in production.",
     "landing": {
         "title": "Sabarinathan D",
-        "subtitle": "Full Stack Developer • System Architect • Performance Enthusiast",
+        "subtitle": "Software Engineer • Full-Stack Development",
         "roles": [
+            "Software Engineer",
             "Full Stack Developer",
-            "System Architect",
-            "Performance Enthusiast",
-            "API Designer"
+            "Frontend & Backend",
+            "API Integration"
         ],
-        "description": "I design and build scalable web applications with a strong focus on backend architecture, API design, and responsive frontend engineering. From secure REST APIs to dynamic UI systems, I craft software that performs reliably under real-world conditions.",
+        "description": "I design and build web applications with a focus on frontend engineering, API integration, and database-backed features. From REST APIs to responsive interfaces, I write software that holds up under real use.",
         "highlights": [
-            "Scalable Backend Systems",
-            "Modern React Interfaces",
-            "Database Optimization",
-            "Cloud-Ready Architectures"
+            "React & Next.js Interfaces",
+            "PHP & REST APIs",
+            "Database-backed Features",
+            "Practical Debugging"
         ],
         "cta": {
             "contact": "contact",
@@ -177,123 +177,272 @@
         }
     ],
     "skills": {
-        "groups": [
+        "categories": [
             {
-                "label": "AI & Automation",
-                "color": "#ff6b8a",
-                "icon": "✨",
-                "span": "lg:col-span-1",
-                "skills": [
-                    "Gemini",
-                    "OpenAI",
-                    "Claude",
-                    "Opencode",
-                    "Omniroute",
-                    "Ollama"
-                ]
-            },
-            {
-                "label": "Frontend",
+                "id": "frontend",
+                "label": "Frontend Development",
+                "description": "Interfaces I build and ship in client and personal projects.",
                 "color": "#00e5ff",
-                "icon": "⚡",
-                "span": "lg:col-span-1",
+                "icon": "Monitor",
                 "skills": [
-                    "React",
-                    "Next.js",
-                    "JavaScript",
-                    "HTML",
-                    "CSS",
-                    "Bootstrap & Tailwild"
+                    { "name": "React", "level": "Hands-on", "evidence": "NexTrade, TrackerX, Yehova" },
+                    { "name": "Next.js", "level": "Hands-on", "evidence": "Yehova, NexTrade, TrackerX" },
+                    { "name": "JavaScript", "level": "Hands-on", "evidence": "Production UI and intern work" },
+                    { "name": "HTML", "level": "Hands-on", "evidence": "SalesQueen intern" },
+                    { "name": "CSS", "level": "Hands-on", "evidence": "Quotes Display App, intern work" },
+                    { "name": "Tailwind CSS", "level": "Hands-on", "evidence": "Yehova, NexTrade, TrackerX" },
+                    { "name": "Bootstrap", "level": "Hands-on", "evidence": "SalesQueen intern" }
                 ]
             },
             {
-                "label": "Backend Languages",
+                "id": "backend",
+                "label": "Backend Development",
+                "description": "Server-side languages and frameworks used in professional and project work.",
                 "color": "#00ff88",
-                "icon": "🔧",
-                "span": "lg:col-span-1",
+                "icon": "Server",
                 "skills": [
-                    "PHP",
-                    "Python",
-                    "Java",
-                    "C"
+                    { "name": "PHP", "level": "Hands-on", "evidence": "SalesQueen" },
+                    { "name": "Laravel", "level": "Hands-on", "evidence": "SalesQueen" },
+                    { "name": "CodeIgniter", "level": "Hands-on", "evidence": "SalesQueen intern" },
+                    { "name": "Python", "level": "Hands-on", "evidence": "Sentinel" },
+                    { "name": "FastAPI", "level": "Hands-on", "evidence": "Sentinel" },
+                    { "name": "Django", "level": "Working knowledge" },
+                    { "name": "Node.js", "level": "Working knowledge" }
                 ]
             },
             {
-                "label": "Frameworks",
-                "color": "#ffb700",
-                "icon": "📦",
-                "span": "lg:col-span-2",
+                "id": "ai",
+                "label": "AI & Automation",
+                "description": "LLM tools used in development workflows and experimental local setups.",
+                "color": "#ff6b8a",
+                "icon": "Sparkles",
                 "skills": [
-                    "Laravel",
-                    "CodeIgniter",
-                    "Django",
-                    "Fast API",
-                    "Node.js",
-                    "Spring Boot"
+                    { "name": "OpenAI / GPT", "level": "Working knowledge" },
+                    { "name": "Google Gemini", "level": "Working knowledge" },
+                    { "name": "Claude", "level": "Working knowledge" },
+                    { "name": "Ollama", "level": "Working knowledge", "evidence": "Local assistant experiments" },
+                    { "name": "LLM integration", "level": "Working knowledge" },
+                    { "name": "AI-assisted development", "level": "Hands-on" }
                 ]
             },
             {
-                "label": "Database & Cloud",
+                "id": "databases",
+                "label": "Databases & Data",
+                "description": "Relational data, hosted backends, and day-to-day querying.",
                 "color": "#38bdf8",
-                "icon": "☁️",
-                "span": "lg:col-span-1",
+                "icon": "Database",
                 "skills": [
-                    "MySQL",
-                    "PostgreSQL",
-                    "AWS (Cloud Foundations)",
-                    "Docker",
-                    "Git & Github"
+                    { "name": "MySQL", "level": "Hands-on", "evidence": "SalesQueen intern" },
+                    { "name": "PostgreSQL", "level": "Hands-on", "evidence": "NexTrade" },
+                    { "name": "Supabase", "level": "Hands-on", "evidence": "NexTrade, TrackerX" },
+                    { "name": "SQL querying", "level": "Hands-on" },
+                    { "name": "Schema design", "level": "Working knowledge", "evidence": "SalesQueen intern" }
+                ]
+            },
+            {
+                "id": "mobile",
+                "label": "Mobile & Cross-Platform",
+                "description": "Shared web code delivered to Android with Capacitor — not native Kotlin or Java Android.",
+                "color": "#a855f7",
+                "icon": "Smartphone",
+                "skills": [
+                    { "name": "Capacitor", "level": "Hands-on", "evidence": "NexTrade" },
+                    { "name": "Cross-platform delivery", "level": "Hands-on", "evidence": "NexTrade web + Android" },
+                    { "name": "Responsive UI", "level": "Hands-on", "evidence": "Client and personal projects" }
+                ]
+            },
+            {
+                "id": "devops",
+                "label": "DevOps & Tools",
+                "description": "Version control, deployment, and environment basics used to ship work.",
+                "color": "#ffb700",
+                "icon": "Wrench",
+                "skills": [
+                    { "name": "Git", "level": "Hands-on" },
+                    { "name": "GitHub", "level": "Hands-on" },
+                    { "name": "Docker", "level": "Working knowledge" },
+                    { "name": "AWS fundamentals", "level": "Foundational", "evidence": "AWS Academy Cloud Foundations" },
+                    { "name": "Vercel", "level": "Hands-on", "evidence": "Yehova, TrackerX, Quotes" }
+                ]
+            },
+            {
+                "id": "languages",
+                "label": "Additional Languages",
+                "description": "Languages from training and earlier coursework, used less often in current shipping work.",
+                "color": "#8ba4b5",
+                "icon": "Code2",
+                "skills": [
+                    { "name": "Java", "level": "Working knowledge", "evidence": "Jspiders training" },
+                    { "name": "Spring Boot", "level": "Working knowledge", "evidence": "Jspiders training" },
+                    { "name": "C", "level": "Foundational", "evidence": "Diploma coursework" }
                 ]
             }
         ],
-        "proficiencies": {
-            "React": 90,
-            "Next.js": 80,
-            "JavaScript": 88,
-            "HTML": 95,
-            "CSS": 90,
-            "Bootstrap & Tailwild": 85,
-            "Java": 70,
-            "Spring Boot": 78,
-            "PHP": 90,
-            "Python": 70,
-            "C": 65,
-            "CodeIgniter": 90,
-            "Laravel": 85,
-            "Django": 70,
-            "Node.js": 70,
-            "Fast API": 75,
-            "MySQL": 85,
-            "PostgreSQL": 80,
-            "AWS (Cloud Foundations)": 60,
-            "Docker": 70,
-            "Git & Github": 85,
-            "Gemini": 80,
-            "OpenAI": 75,
-            "Claude": 70,
-            "Opencode": 80,
-            "Omniroute": 75,
-            "Ollama": 65
-        }
+        "capabilities": [
+            {
+                "title": "Full-stack application development",
+                "description": "Build features across UI, server logic, and data in the same product.",
+                "icon": "Layers",
+                "relatedProject": "NexTrade"
+            },
+            {
+                "title": "REST API development and integration",
+                "description": "Implement and consume HTTP APIs, including third-party data sources.",
+                "icon": "Workflow",
+                "relatedProject": "Sentinel"
+            },
+            {
+                "title": "Authentication and access control",
+                "description": "Add sign-in and protected application data using hosted auth where the product needs it.",
+                "icon": "Lock",
+                "relatedProject": "TrackerX"
+            },
+            {
+                "title": "Database design and management",
+                "description": "Model and query relational data, then wire it into application features.",
+                "icon": "Database",
+                "relatedProject": "NexTrade"
+            },
+            {
+                "title": "Frontend and backend integration",
+                "description": "Connect React and Next.js interfaces to APIs and hosted backends.",
+                "icon": "Link",
+                "relatedProject": "Sentinel"
+            },
+            {
+                "title": "AI and LLM integration",
+                "description": "Use LLM APIs and local models in development workflows and experimental tools.",
+                "icon": "Sparkles"
+            },
+            {
+                "title": "Responsive web development",
+                "description": "Ship layouts that stay usable from mobile through desktop viewports.",
+                "icon": "Monitor",
+                "relatedProject": "Yehova"
+            },
+            {
+                "title": "Cross-platform web and Android delivery",
+                "description": "Package a Next.js app for Android with Capacitor alongside the web release.",
+                "icon": "Smartphone",
+                "relatedProject": "NexTrade"
+            },
+            {
+                "title": "Debugging and troubleshooting",
+                "description": "Trace UI, API, and data issues and land maintainable fixes.",
+                "icon": "Bug"
+            },
+            {
+                "title": "Performance-minded maintenance",
+                "description": "Tighten queries and interface work where it helps day-to-day use — without claiming benchmarked speed gains.",
+                "icon": "Gauge"
+            },
+            {
+                "title": "Third-party service integration",
+                "description": "Connect products to external APIs and lightweight backends such as Google Sheets.",
+                "icon": "Plug",
+                "relatedProject": "Yehova"
+            },
+            {
+                "title": "Application deployment",
+                "description": "Deploy and update web apps on Vercel with Git-based releases.",
+                "icon": "Rocket",
+                "relatedProject": "Yehova"
+            },
+            {
+                "title": "Git-based version control",
+                "description": "Collaborate through branches, reviews, and history on GitHub.",
+                "icon": "GitBranch"
+            }
+        ],
+        "strengths": [
+            {
+                "title": "Self-directed learning",
+                "description": "Pick up tools and close gaps without waiting for a formal course.",
+                "icon": "Lightbulb"
+            },
+            {
+                "title": "Independent execution",
+                "description": "Take a feature from a rough brief through to a working release.",
+                "icon": "Flag"
+            },
+            {
+                "title": "Practical problem-solving",
+                "description": "Prefer a clear, working fix over an over-engineered one.",
+                "icon": "Compass"
+            },
+            {
+                "title": "Adaptability",
+                "description": "Move between frontend, backend, and integration work as the product needs.",
+                "icon": "Repeat"
+            },
+            {
+                "title": "Ownership",
+                "description": "Stay with a task until it is shipped and understandable to the next person.",
+                "icon": "Handshake"
+            },
+            {
+                "title": "Persistent debugging",
+                "description": "Keep tracing an issue until the cause is found, not just the symptom.",
+                "icon": "Focus"
+            }
+        ],
+        "interests": [
+            {
+                "title": "Cricket",
+                "description": "Follow and play cricket away from the keyboard.",
+                "icon": "Trophy"
+            },
+            {
+                "title": "Athletics",
+                "description": "Stay active outside of software work.",
+                "icon": "Activity"
+            }
+        ]
     },
     "experience": [
         {
             "company": "SalesQueen Software Solutions",
             "role": "Frontend Developer Intern",
             "duration": "Jul 2024 - Sep 2024",
-            "description": "Built responsive, high-performance user interfaces using HTML, CSS, JavaScript, and Bootstrap. Collaborated closely with design teams to translate wireframes into interactive, pixel-perfect web experiences."
+            "employmentType": "Internship",
+            "highlights": [
+                "Built responsive user interfaces with HTML, CSS, JavaScript, and Bootstrap.",
+                "Translated design wireframes into interactive, production-ready web pages."
+            ]
         },
         {
             "company": "SalesQueen Software Solutions",
             "role": "Backend Developer Intern",
             "duration": "Oct 2024 - Dec 2024",
-            "description": "Developed server-side logic and RESTful APIs using PHP and the CodeIgniter framework. Optimized MySQL database schemas, implemented secure data handling protocols, and streamlined system integrations."
+            "employmentType": "Internship",
+            "highlights": [
+                "Developed server-side logic and REST APIs using PHP and CodeIgniter.",
+                "Worked with MySQL schemas, data handling, and system integrations."
+            ]
         },
         {
             "company": "SalesQueen Software Solutions",
             "role": "Full Stack Developer",
-            "duration": "Jan 2025 - Present",
-            "description": "Engineered scalable web applications by bridging frontend responsiveness with robust backend architectures. Owned end-to-end feature development, optimized codebase performance, and integrated full-stack solutions to drive seamless user experiences."
+            "duration": "Jan 2025 -  May 2026",
+            "employmentType": "Full-time",
+            "highlights": [
+                "Built web features across frontend and backend, connecting UI with server-side logic.",
+                "Owned end-to-end feature work, including debugging, integrations, and maintainable changes."
+            ]
+        },
+        {
+            "company": "Digient Technologies Private Limited",
+            "role": "Software Engineer",
+            "duration": "Sep 2026 - Present",
+            "location": "Chennai, Tamil Nadu, India",
+            "employmentType": "Full-time",
+            "current": true,
+            "highlights": [
+                "Contribute to software development across frontend and backend in a B2B iGaming technology environment.",
+                "Work with web applications, REST APIs, and database-backed features as part of a collaborative engineering team.",
+                "Debug, maintain, and improve application code with attention to reliability and readability.",
+                "Use Git-based workflows and AI-assisted development tools to iterate on features."
+            ]
         }
     ],
     "education": [
@@ -307,7 +456,7 @@
             "score": "8.86 CGPA",
             "highlights": [
                 "Focus Areas: Computer Architecture, Database Systems, Web Development",
-                "Balancing full-time software development with academic studies"
+                "Balancing full-time software engineering with academic studies"
             ]
         },
         {
@@ -326,12 +475,6 @@
     "achievements": [
         "Won District-level cricket championship",
         "Secured 3rd place in State-level cricket tournament"
-    ],
-    "interests": [
-        "Software Development",
-        "Cricket",
-        "Athletics",
-        "Building new things"
     ],
     "contact": {
         "email": "nsabarinathan.in@gmail.com",
@@ -390,7 +533,7 @@
         {
             "period": "Jul 2024 - Dec 2024",
             "title": "Full Stack Developer Intern",
-            "organization": "Salesqueen Software Solutions",
+            "organization": "SalesQueen Software Solutions",
             "category": "Experience",
             "status": "Completed",
             "description": "Analyzed complex ERP architectures, debugged legacy code, optimized SQL database queries, and mastered enterprise production workflows, leading directly to a full-time offer.",
@@ -404,11 +547,11 @@
             "metrics": []
         },
         {
-            "period": "Jan 2025 - Present",
+            "period": "Jan 2025 - May 2026",
             "title": "Full Stack Developer",
-            "organization": "Salesqueen Software Solutions",
+            "organization": "SalesQueen Software Solutions",
             "category": "Experience",
-            "status": "Ongoing",
+            "status": "Completed",
             "description": "Architected and deployed an enterprise B2B Manufacturing & ERP Suite serving 15+ clients, engineered an automated biochemical recipe mix calculator, and built real-time WebSocket P&L analytics dashboards.",
             "tags": [
                 "React.js",
@@ -448,6 +591,21 @@
                 "Computer Science",
                 "Database Systems",
                 "Software Engineering"
+            ],
+            "metrics": []
+        },
+        {
+            "period": "Sep 2026 - Present",
+            "title": "Software Engineer",
+            "organization": "Digient Technologies Private Limited",
+            "category": "Experience",
+            "status": "Ongoing",
+            "description": "Building and maintaining web applications in a B2B iGaming technology environment, working across application code, APIs, databases, and collaborative Git workflows.",
+            "tags": [
+                "Software Development",
+                "Web Applications",
+                "REST APIs",
+                "Git"
             ],
             "metrics": []
         },

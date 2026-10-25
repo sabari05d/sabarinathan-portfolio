@@ -2,7 +2,8 @@
 
 import { useRef, useState, MouseEvent } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { ExternalLink, Github, Code2, Layers, CheckCircle2, AlertCircle, Clock, User, Briefcase } from 'lucide-react'
+import { ExternalLink, Code2, Layers, CheckCircle2, AlertCircle, Clock, User, Briefcase } from 'lucide-react'
+import { GitHubIcon } from '@/components/icons/BrandIcons'
 import portfolioData from '@/data/portfolio.json'
 import type { Project, Portfolio } from '@/types/portfolio'
 
@@ -200,8 +201,9 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 text-xs text-[#8ba4b5] hover:text-[#00e5ff] transition-colors"
             style={{ fontFamily: "'JetBrains Mono', monospace" }}
+            aria-label={`View ${project.title} source on GitHub`}
           >
-            <Github size={13} />
+            <GitHubIcon size={13} />
             Source
           </a>
         )}
@@ -212,6 +214,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 text-xs text-[#8ba4b5] hover:text-[#00e5ff] transition-colors"
             style={{ fontFamily: "'JetBrains Mono', monospace" }}
+            aria-label={`Open live demo of ${project.title}`}
           >
             <ExternalLink size={13} />
             Live Demo
@@ -302,8 +305,9 @@ export default function ProjectsSection() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-sm text-[#8ba4b5] hover:text-[#00e5ff] transition-colors"
             style={{ fontFamily: "'JetBrains Mono', monospace" }}
+            aria-label="Explore all repositories on GitHub"
           >
-            <Github size={16} />
+            <GitHubIcon size={16} />
             Explore all repositories on GitHub
             <ExternalLink size={12} />
           </a>

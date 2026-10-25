@@ -2,9 +2,13 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Search, ArrowRight, Hash, User, Briefcase, Code2, Mail, Github, Linkedin, X, type LucideIcon } from 'lucide-react'
+import type { ComponentType, SVGProps } from 'react'
+import { Search, ArrowRight, Hash, User, Briefcase, Code2, Mail, X } from 'lucide-react'
+import { GitHubIcon, LinkedInIcon } from '@/components/icons/BrandIcons'
 import portfolioData from '@/data/portfolio.json'
 import type { Portfolio } from '@/types/portfolio'
+
+type CommandIcon = ComponentType<{ size?: number; className?: string } & SVGProps<SVGSVGElement>>
 
 interface CommandPaletteProps {
   isOpen: boolean
@@ -14,7 +18,7 @@ interface CommandPaletteProps {
 interface Command {
   id: string
   label: string
-  icon: LucideIcon
+  icon: CommandIcon
   section: string
   href?: string
   external?: boolean
@@ -31,8 +35,8 @@ const navCommands: Command[] = [
   { id: 'skills', label: 'Tech Stack', icon: Hash, section: 'Navigate', href: '#skills', shortcut: 'S' },
   { id: 'experience', label: 'Experience', icon: Briefcase, section: 'Navigate', href: '#experience', shortcut: 'E' },
   { id: 'contact', label: 'Contact Me', icon: Mail, section: 'Navigate', href: '#contact', shortcut: 'C' },
-  { id: 'github', label: 'Open GitHub', icon: Github, section: 'Links', href: data.contact.github, external: true },
-  { id: 'linkedin', label: 'Open LinkedIn', icon: Linkedin, section: 'Links', href: data.contact.linkedin, external: true },
+  { id: 'github', label: 'Open GitHub', icon: GitHubIcon, section: 'Links', href: data.contact.github, external: true },
+  { id: 'linkedin', label: 'Open LinkedIn', icon: LinkedInIcon, section: 'Links', href: data.contact.linkedin, external: true },
   { id: 'email', label: 'Send Email', icon: Mail, section: 'Links', href: `mailto:${data.contact.email}`, external: true },
 ]
 
