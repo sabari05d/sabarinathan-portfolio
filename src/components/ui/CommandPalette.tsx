@@ -95,7 +95,7 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
     }
   }, [onClose])
 
-  useEffect(() => {
+  useEffect(() => {   
     if (!isOpen) return
 
     const handler = (e: KeyboardEvent) => {
