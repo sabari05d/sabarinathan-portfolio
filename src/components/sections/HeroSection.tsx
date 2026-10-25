@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
-import { Github, Linkedin, Mail, ArrowDown, Zap, ChevronRight, FileText } from 'lucide-react'
+import { GlobeCode, SquareUser, Mail, ArrowDown, Zap, ChevronRight, FileText, Icon } from 'lucide-react'
 import data from '@/data/portfolio.json'
 
 const ROLES = data.landing.roles
@@ -219,8 +219,8 @@ export default function HeroSection() {
           className="flex items-center justify-center gap-5"
         >
           {[
-            { href: data.contact.github, Icon: Github, label: 'GitHub' },
-            { href: data.contact.linkedin, Icon: Linkedin, label: 'LinkedIn' },
+            { href: data.contact.github, Icon: GlobeCode, label: 'GitHub' },
+            { href: data.contact.linkedin, Icon: SquareUser, label: 'LinkedIn' },
             { href: `mailto:${data.contact.email}`, Icon: Mail, label: 'Email' },
             { href: data.contact.resume, Icon: FileText, label: 'Resume' },
           ].map(({ href, Icon, label }) => (

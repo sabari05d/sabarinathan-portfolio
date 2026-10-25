@@ -2,7 +2,7 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Mail, Github, Linkedin, Globe, Send, ArrowRight, Phone, FileText } from 'lucide-react'
+import { Mail, GlobeCode, SquareUser, Globe, Send, ArrowRight, Phone, FileText } from 'lucide-react'
 import data from '@/data/portfolio.json'
 
 export default function ContactSection() {
@@ -21,14 +21,14 @@ export default function ContactSection() {
       color: '#00e5ff',
     },
     {
-      icon: Github,
+      icon: GlobeCode,
       label: 'GitHub',
       value: 'sabari05d',
       href: data.contact.github,
       color: '#8ba4b5',
     },
     {
-      icon: Linkedin,
+      icon: SquareUser,
       label: 'LinkedIn',
       value: 'sabarinathan-d',
       href: data.contact.linkedin,

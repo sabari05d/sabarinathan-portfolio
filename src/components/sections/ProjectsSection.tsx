@@ -2,7 +2,7 @@
 
 import { useRef, MouseEvent } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { ExternalLink, Github, Code2, Layers, CheckCircle2, AlertCircle, Clock, User, Briefcase, Lock } from 'lucide-react'
+import { ExternalLink, GlobeCode, Code2, Layers, CheckCircle2, AlertCircle, Clock, User, Briefcase, Lock } from 'lucide-react'
 import portfolioData from '@/data/portfolio.json'
 import type { Project, Portfolio } from '@/types/portfolio'
 
@@ -202,7 +202,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                 rel="noopener noreferrer"
                 className="flex items-center gap-1.5 text-xs text-[#8ba4b5] hover:text-[#00e5ff] transition-colors font-mono"
               >
-                <Github size={13} />
+                <GlobeCode size={13} />
                 Source
               </a>
             )}
@@ -302,7 +302,7 @@ export default function ProjectsSection() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-sm text-[#8ba4b5] hover:text-[#00e5ff] transition-colors font-mono"
           >
-            <Github size={16} />
+            <GlobeCode size={16} />
             Explore all repositories on GitHub
             <ExternalLink size={12} />
           </a>

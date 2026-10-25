@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Search, ArrowRight, Hash, User, Briefcase, Code2, Mail, Github, Linkedin, X, type LucideIcon } from 'lucide-react'
+import { Search, ArrowRight, Hash, User, Briefcase, Code2, Mail, GlobeCode, SquareUser, X, type LucideIcon } from 'lucide-react'
 import portfolioData from '@/data/portfolio.json'
 import type { Portfolio } from '@/types/portfolio'
 
@@ -31,8 +31,8 @@ const navCommands: Command[] = [
   { id: 'skills', label: 'Tech Stack', icon: Hash, section: 'Navigate', href: '#skills', shortcut: 'S' },
   { id: 'experience', label: 'Experience', icon: Briefcase, section: 'Navigate', href: '#experience', shortcut: 'E' },
   { id: 'contact', label: 'Contact Me', icon: Mail, section: 'Navigate', href: '#contact', shortcut: 'C' },
-  { id: 'github', label: 'Open GitHub', icon: Github, section: 'Links', href: data.contact.github, external: true },
-  { id: 'linkedin', label: 'Open LinkedIn', icon: Linkedin, section: 'Links', href: data.contact.linkedin, external: true },
+  { id: 'github', label: 'Open GitHub', icon: GlobeCode, section: 'Links', href: data.contact.github, external: true },
+  { id: 'linkedin', label: 'Open LinkedIn', icon: SquareUser, section: 'Links', href: data.contact.linkedin, external: true },
   { id: 'email', label: 'Send Email', icon: Mail, section: 'Links', href: `mailto:${data.contact.email}`, external: true },
 ]
 
